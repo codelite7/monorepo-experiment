@@ -1,0 +1,191 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Others elements</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Loadings</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">LOADING CIRCLE:</h5>
+
+        <!-- loading circle basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading circle basic:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-loading-circle class="mr-3" *ngFor="let item of colors" [borderColor]="item"></fz-loading-circle>
+            </div>
+        </fz-card>
+
+        <!-- loading circle size -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading circle size:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-loading-circle [size]="60" class="mr-3" *ngFor="let item of colors"
+                                   [borderColor]="item"></fz-loading-circle>
+            </div>
+        </fz-card>
+
+        <!-- loading circle inverse -->
+        <fz-card class="doc-card-margin" *ngIf="!mainService.getDarkTheme()">
+            <div class="doc-title-card">
+                Loading circle color inverse:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-loading-circle class="mr-3" *ngFor="let item of colors" [color]="item"
+                                   borderColor="gray-300"></fz-loading-circle>
+            </div>
+        </fz-card>
+
+        <h5 class="doc-title-area">LOADING CIRCLE 2:</h5>
+
+        <!-- loading circle 2 basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading circle 2 basic:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-loading-circle2 class="mr-3" *ngFor="let item of colors" [color]="item"></fz-loading-circle2>
+            </div>
+        </fz-card>
+
+        <!-- loading circle 2 size -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading circle 2 size:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-loading-circle2 [size]="60" class="mr-3" *ngFor="let item of colors"
+                                    [color]="item"></fz-loading-circle2>
+            </div>
+        </fz-card>
+
+        <h5 class="doc-title-area">LOADING WAVE:</h5>
+
+        <!-- loading wave basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading wave basic:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-loading-wave class="mr-3" *ngFor="let item of colors" [color]="item"></fz-loading-wave>
+            </div>
+        </fz-card>
+
+        <!-- loading wave size -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading wave size:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-loading-wave [size]="60" class="mr-3" *ngFor="let item of colors" [color]="item"></fz-loading-wave>
+            </div>
+        </fz-card>
+
+        <h5 class="doc-title-area">LOADING DOT:</h5>
+
+        <!-- loading dot basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading dot basic:
+            </div>
+
+            <div class="d-flex flex-wrap mb-4">
+                <fz-loading-circle-dot></fz-loading-circle-dot>
+            </div>
+        </fz-card>
+
+        <h5 class="doc-title-area">LOADING BAR:</h5>
+
+        <!-- loading bar -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Loading bar basic:
+            </div>
+
+            <div class="d-flex flex-column">
+                <fz-loading-bar class="mb-4 mt-2" *ngFor="let item of colors" [color]="item"></fz-loading-bar>
+            </div>
+        </fz-card>
+
+        <h5 class="doc-title-area">LOADING GENERAL:</h5>
+
+        <!-- simulate loading general -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Simulate loading options:
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                    <label for="type">Type loading</label>
+                    <select class="form-control" id="type" [(ngModel)]="options.type">
+                        <option></option>
+                        <option *ngFor="let item of types" [value]="item.type">{{ item.value }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                    <label for="backgroundOverlay">Background backdrop</label>
+                    <select class="form-control" id="backgroundOverlay" [(ngModel)]="options.backgroundOverlay">
+                        <option></option>
+                        <option *ngFor="let item of colorsC">{{ item }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                    <label for="color">Color</label>
+                    <select class="form-control" id="color" [(ngModel)]="options.color">
+                        <option></option>
+                        <option *ngFor="let item of colorsC">{{ item }}</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row mt-2">
+
+                <div class="form-group col-sm-6 col-md-6 col-lg-6">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="statusOverlay"
+                               [(ngModel)]="options.statusOverlay"
+                               (change)="options.statusOverlay = $event.target.checked">
+                        <label class="custom-control-label" for="statusOverlay"> Backdrop
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6 col-md-6 col-lg-6">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="areaCard" [(ngModel)]="options.areaCard"
+                               (change)="options.areaCard = $event.target.checked">
+                        <label class="custom-control-label" for="areaCard"> Area card
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr/>
+
+            <button fzButton color="primary" (click)="loadingService.setOptions(this.options).show(2000)">Simulate
+                loading
+            </button>
+
+        </fz-card>
+
+    </div>
+</div>

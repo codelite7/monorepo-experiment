@@ -1,0 +1,59 @@
+<div [ngClass]="{ 'container pl-0 pr-0': !mainService.getFullBox(), 'justify-content-between': mainService.responsive }"
+     class="main-header-content">
+
+    <!-- logo and colapse navbar -->
+    <div class="header-item name-dash-area pl-0 animated fadeIn mr-2"
+         *ngIf="!mainService.navState && !mainService.responsive">
+        <a class="colapse-navbar" href="javascript:void(0);" (click)="mainService.colapseNav()">
+            <i class="fas fa-bars"></i>
+        </a>
+        <fz-brand></fz-brand>
+    </div>
+
+    <!-- collapse navbar -->
+    <a href="javascript:void(0);" class="header-item mr-2" (click)="mainService.colapseNav()"
+       *ngIf="mainService.navState || mainService.responsive">
+        <i class="fas fa-bars"></i>
+    </a>
+
+    <!-- search header -->
+<!--    <fz-search-header class="header-search mr-2"-->
+<!--                      *ngIf="!mainService.responsive && mainService.getHeaderOptSearch()"></fz-search-header>-->
+
+    <!-- items mobile -->
+    <ng-container *ngIf="mainService.responsive">
+        <ng-container *ngTemplateOutlet="items"></ng-container>
+    </ng-container>
+
+    <!-- items right -->
+    <div class="header-item-right" *ngIf="!mainService.responsive">
+        <span fzTip content="Documentation" [ngStyle]="{'font-size.px': 20}">
+            <a href="https://swarmio-labs.gitbook.io/platform-documentation/" target="_blank">
+                <i class="animated animated-delay-1s swing fas fa-book" style="color:rgba(255, 255, 255, 0.9)"></i>
+            </a>
+        </span>
+        <ng-container *ngTemplateOutlet="items"></ng-container>
+    </div>
+
+
+    <!-- items template -->
+    <ng-template #items>
+
+        <!-- dropdown notifications -->
+        <fz-dropdown-notifications></fz-dropdown-notifications>
+
+        <!-- dropdown messages -->
+<!--        <fz-dropdown-messages *ngIf="mainService.getHeaderOptChat()"></fz-dropdown-messages>-->
+
+        <!-- dropdown email -->
+<!--        <fz-dropdown-email *ngIf="mainService.getHeaderOptEmail()"></fz-dropdown-email>-->
+
+        <!-- dropdown tasks -->
+<!--        <fz-dropdown-tasks *ngIf="!mainService.responsiveTiny && mainService.getHeaderOptTask()"></fz-dropdown-tasks>-->
+
+        <!-- user dropdown -->
+<!--        <fz-dropdown-user></fz-dropdown-user>-->
+
+    </ng-template>
+
+</div>

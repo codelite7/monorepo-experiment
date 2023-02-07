@@ -1,0 +1,460 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Others elements</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Forms</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">Forms:</h5>
+
+        <!--  form controls -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form controls:
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                           placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Example select</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </form>
+
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+
+        </fz-card>
+
+        <!--  sizes -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form sizes:
+            </div>
+
+            <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+            <input class="form-control mt-3" type="text" placeholder="Default input">
+            <input class="form-control mt-3 form-control-sm" type="text" placeholder=".form-control-sm">
+
+        </fz-card>
+
+        <!-- Readonly -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form readonly:
+            </div>
+
+            <input class="form-control" type="text" placeholder="Readonly input here..." readonly>
+        </fz-card>
+
+        <!-- Range Inputs -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form range input:
+            </div>
+
+            <label for="customRange1">Example range</label>
+            <input type="range" class="custom-range" id="customRange1">
+        </fz-card>
+
+        <!-- checkbox -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form checkbox input:
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+            </div>
+            <div class="custom-control custom-checkbox mt-2">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2">Check this custom checkbox</label>
+            </div>
+
+        </fz-card>
+
+        <!-- radio -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form radio input:
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+            </div>
+            <div class="custom-control custom-radio mt-2">
+                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+            </div>
+        </fz-card>
+
+        <!-- Switches -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form switches:
+            </div>
+
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+            </div>
+            <div class="custom-control custom-switch mt-2">
+                <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
+                <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+            </div>
+        </fz-card>
+
+        <!-- selects -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form select menu:
+            </div>
+
+            <select class="custom-select">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <select class="custom-select mt-4" multiple>
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </fz-card>
+
+        <h5 class="doc-title-area">Forms positions:</h5>
+
+        <!-- form group -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form groups:
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Example label</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                           placeholder="Example input placeholder">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Another label</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2"
+                           placeholder="Another input placeholder">
+                </div>
+            </form>
+        </fz-card>
+
+        <!-- form grid -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form grid:
+            </div>
+
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+            </form>
+        </fz-card>
+
+        <!-- form row -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Form row:
+            </div>
+
+            <form>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+            </form>
+        </fz-card>
+
+        <!-- Horizontal form -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Horizontal form:
+            </div>
+
+            <form>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3">
+                    </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                       value="option1" checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                    First radio
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                       value="option2">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Second radio
+                                </label>
+                            </div>
+                            <div class="form-check disabled">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                       value="option3" disabled>
+                                <label class="form-check-label" for="gridRadios3">
+                                    Third disabled radio
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                    <div class="col-sm-2">Checkbox</div>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                            <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fz-card>
+
+        <!-- Column sizing -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Column sizing:
+            </div>
+
+            <form>
+                <div class="form-row">
+                    <div class="col-7">
+                        <input type="text" class="form-control" placeholder="City">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="State">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Zip">
+                    </div>
+                </div>
+            </form>
+        </fz-card>
+
+        <!-- Inline forms -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Inline forms:
+            </div>
+
+            <form class="form-inline">
+                <label class="sr-only" for="inlineFormInputName2">Name</label>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+
+                <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+                </div>
+
+                <div class="form-check mb-2 mr-sm-2">
+                    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                    <label class="form-check-label" for="inlineFormCheck">
+                        Remember me
+                    </label>
+                </div>
+            </form>
+        </fz-card>
+
+        <h5 class="doc-title-area">Form validation:</h5>
+
+        <!-- Server side -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Server side:
+            </div>
+
+            <form>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServer01">First name</label>
+                        <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServer02">Last name</label>
+                        <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServerUsername">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                            </div>
+                            <input type="text" class="form-control is-invalid" id="validationServerUsername"
+                                   aria-describedby="inputGroupPrepend3"
+                                   required>
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer03">City</label>
+                        <input type="text" class="form-control is-invalid" id="validationServer03" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="validationServer04">State</label>
+                        <select class="custom-select is-invalid" id="validationServer04" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option>...</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="validationServer05">Zip</label>
+                        <input type="text" class="form-control is-invalid" id="validationServer05" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                        <label class="form-check-label" for="invalidCheck3">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                            You must agree before submitting.
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fz-card>
+
+        <!-- Supported elements -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Supported elements:
+            </div>
+
+            <form class="was-validated">
+                <div class="mb-3">
+                    <label for="validationTextarea">Textarea</label>
+                    <textarea class="form-control is-invalid" id="validationTextarea"
+                              placeholder="Required example textarea" required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter a message in the textarea.
+                    </div>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+                    <label class="custom-control-label" for="customControlValidation1">Check this custom
+                        checkbox</label>
+                    <div class="invalid-feedback">Example invalid feedback text</div>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked"
+                           required>
+                    <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+                </div>
+                <div class="custom-control custom-radio mb-3">
+                    <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked"
+                           required>
+                    <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom
+                        radio</label>
+                    <div class="invalid-feedback">More example invalid feedback text</div>
+                </div>
+
+                <div class="form-group">
+                    <select class="custom-select" required>
+                        <option value="">Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <div class="invalid-feedback">Example invalid custom select feedback</div>
+                </div>
+
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+            </form>
+        </fz-card>
+
+    </div>
+</div>

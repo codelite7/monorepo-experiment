@@ -1,0 +1,5 @@
+<app-pipeline-form [edit]="true" [pipeline]="pipeline" *ngIf="pipeline !== undefined && pipeline !== null"></app-pipeline-form>
+
+<app-generic-not-found *ngIf="pipeline === null" [text]="'The pipeline you are looking for was not found'"></app-generic-not-found>
+
+<app-generic-error *ngIf="error === true"></app-generic-error>

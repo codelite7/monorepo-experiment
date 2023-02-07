@@ -1,0 +1,206 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Others elements</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Tabs</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">TABS:</h5>
+
+        <!-- basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Basic tabs:
+            </div>
+
+            <fz-tab-group>
+                <fz-tab [active]="true" label="<i class='fab fa-buffer'></i> Tab 1">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="<i class='fas fa-building'></i> Tab 2">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="<i class='fas fa-briefcase'></i> Tab 3">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- disabled -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Disabled tab:
+            </div>
+
+            <fz-tab-group>
+                <fz-tab [active]="true" label="Tab 1 <i class='fab fa-buffer'></i>">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab [disabled]="true" label="Tab 2 <i class='fas fa-building'></i>">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 3 <i class='fas fa-briefcase'></i>">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- color -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Color active tab:
+            </div>
+
+            <fz-tab-group color="success">
+                <fz-tab label="Tab 1">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab [active]="true" label="Tab 2">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 3">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- position -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Center tabs:
+            </div>
+
+            <fz-tab-group color="danger" position="center">
+                <fz-tab [active]="true" label="Tab 1">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 2">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 3">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- position -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Right tabs:
+            </div>
+
+            <fz-tab-group color="orange" position="end">
+                <fz-tab label="Tab 1">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab [active]="true" label="Tab 2">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 3">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- position -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Between tabs:
+            </div>
+
+            <fz-tab-group color="info" position="between">
+                <fz-tab [active]="true" label="Tab 1">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 2">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 3">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- position -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Around tabs:
+            </div>
+
+            <fz-tab-group color="teal" position="around">
+                <fz-tab label="Tab 1">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab [active]="true" label="Tab 2">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 3">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- justified -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Justified tabs:
+            </div>
+
+            <fz-tab-group [justified]="true">
+                <fz-tab label="Tab 1">
+                    <div class="py-3">Content Tab 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab [active]="true" label="Tab 2">
+                    <div class="py-3">Content Tab 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Tab 3">
+                    <div class="py-3">Content Tab 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <h5 class="doc-title-area">PILLS:</h5>
+
+        <!-- pill -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Basic pill:
+            </div>
+
+            <fz-tab-group type="pills">
+                <fz-tab label="Pill 1">
+                    <div class="py-3">Content Pill 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Pill 2">
+                    <div class="py-3">Content Pill 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab [active]="true" label="Pill 3">
+                    <div class="py-3">Content Pill 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- justified -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Justified pills:
+            </div>
+
+            <fz-tab-group type="pills" [justified]="true">
+                <fz-tab [active]="true" label="Pill 1">
+                    <div class="py-3">Content Pill 1 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Pill 2">
+                    <div class="py-3">Content Pill 2 <br> {{ text }} </div>
+                </fz-tab>
+                <fz-tab label="Pill 3">
+                    <div class="py-3">Content Pill 3 <br> {{ text }}</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+    </div>
+</div>

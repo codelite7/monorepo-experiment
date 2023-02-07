@@ -1,0 +1,137 @@
+@import "bootstrap/variables";
+
+//
+//Login, lockscreen and register pages
+
+.area-ext {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(-45deg, $orange, $pink, $primary, $teal);
+  background-size: 400% 400%;
+  animation: gradient 35s ease infinite;
+  z-index: -1;
+
+  .area-ext-img {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    opacity: 0.050;
+  }
+
+  .area-ext-center {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: auto;
+    z-index: 1;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .area-ext-center-wide {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: auto;
+    z-index: 1;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .area-ext-logo {
+    padding-bottom: 1.7rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .area-ext-footer {
+    margin-top: 1.7rem;
+    margin-bottom: .3rem;
+    display: flex;
+    padding-top: 1.2rem;
+    border-top: 1px solid $gray-200;
+
+    strong {
+      color: $primary;
+    }
+
+    a {
+      color: $gray-700;
+
+      &:hover {
+        text-decoration: none;
+        color: $primary;
+      }
+    }
+  }
+}
+
+.area-ext-dark {
+
+  .area-ext-footer {
+    border-top: 1px solid $gray-700;
+
+    strong {
+      color: $white;
+    }
+
+    a {
+      color: $gray-200;
+
+      &:hover {
+        text-decoration: underline;
+        color: $white;
+      }
+    }
+  }
+
+  .auth-btns-area {
+    .btn {
+      color: $white;
+    }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// 
+
+#icon-svg-auth {
+  width: 26px;
+  margin-right: .3rem;
+}
+
+.card-auth-title {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1.2rem;
+  font-size: 25px;
+}
+
+.auth-lockscreen-top {
+  position: relative;
+  top: -45px;
+  margin-bottom: -40px;
+}

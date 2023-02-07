@@ -1,0 +1,66 @@
+@import "../../../sass/bootstrap/variables";
+@import "src/sass/mixins";
+
+.floating-card {
+  position: fixed;
+  z-index: 99;
+  background: $white;
+  color: $gray-700;
+  @include fz-box-shadow(-1px 3px 15px -2px rgba($black, 0.26));
+  border-radius: .4rem;
+
+  .content {
+    border-radius: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &.padding {
+    padding: 1.1rem;
+  }
+
+  a {
+    color: $gray-600;
+  }
+}
+
+.floating-card-right-bottom {
+  bottom: 0;
+  right: 1.1rem;
+}
+
+.floating-card-left-bottom {
+  bottom: 0;
+  left: 1.1rem;
+}
+
+@media (max-width: 450px) {
+
+  .floating-card {
+    width: 100% !important;
+  }
+
+  .floating-card-right-bottom {
+    bottom: 0;
+    right: 0;
+  }
+
+  .floating-card-left-bottom {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+//
+// Dark theme
+//
+
+.floating-card-dark {
+  background: $gray-700;
+  color: $white;
+
+  a {
+    color: $white;
+  }
+}

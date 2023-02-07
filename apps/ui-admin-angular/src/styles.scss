@@ -1,0 +1,37 @@
+//
+//Bootstrap
+
+@import "sass/bootstrap/bootstrap";
+
+//
+//Others
+
+@import "sass/documentation";
+@import "sass/custom_animate";
+@import "sass/custom_tippy";
+@import "sass/utilities";
+
+//
+//ngx highlight
+@import '~highlight.js/styles/vs2015.css';
+
+//
+//Tippy.js
+
+@import "tippy.js/dist/tippy.css";
+@import "tippy.js/themes/light-border.css";
+@import "tippy.js/themes/light.css";
+@import "tippy.js/themes/material.css";
+@import "tippy.js/themes/translucent.css";
+@import 'tippy.js/animations/scale.css';
+@import 'tippy.js/animations/perspective.css';
+@import 'tippy.js/animations/shift-toward.css';
+@import 'tippy.js/animations/shift-away.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.selected-card {
+  box-shadow: 0 8px 8px 8px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
+  transform: translate3d(0,0,0);
+  transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}

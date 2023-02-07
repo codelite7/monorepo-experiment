@@ -1,0 +1,55 @@
+@import "../../../../../sass/bootstrap/variables";
+
+.task-area-int {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  .new-task {
+    margin-bottom: .5rem;
+    margin-top: .8rem;
+  }
+
+  .task-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-item {
+    border-bottom: 1px solid rgba($gray-200, 0.5);
+    width: 100%;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+
+    .custom-control-label {
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:hover {
+        .close {
+          display: inline;
+        }
+      }
+
+      .close {
+        display: none;
+        color: inherit;
+        font-size: 13px;
+      }
+    }
+
+    .task-completed {
+      text-decoration: line-through;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}

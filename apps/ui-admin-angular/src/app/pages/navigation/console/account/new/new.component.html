@@ -1,0 +1,133 @@
+<div class="content">
+    <ng-container>
+        <h2>New account setup</h2>
+        <p>Before you can use the swarm data platform you must select a plan and provide a payment method. You can cancel at any time and receive a pro-rated refund.</p>
+    </ng-container>
+    <mat-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="tierFormGroup">
+            <ng-template matStepLabel>Select a plan</ng-template>
+            <mat-grid-list cols="3" rowHeight="1:1">
+                <mat-grid-tile>
+                    <mat-card appMaterialHover (click)="selectPlan(plans[0])" [ngClass]="{'selected-card':selectedPlan === plans[0]}">
+                        <mat-card-title>Sandbox</mat-card-title>
+                        <mat-card-subtitle>$5/month + usage</mat-card-subtitle>
+                        <mat-list>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>10 events per second</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>1GB max retention</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>$1.20 /GB egressed</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>1GB free retention</div>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card appMaterialHover (click)="selectPlan(plans[1])" [ngClass]="{'selected-card':selectedPlan === plans[1]}">
+                        <mat-card-title>Team</mat-card-title>
+                        <mat-card-subtitle>$100/month + usage</mat-card-subtitle>
+                        <mat-list>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>1,000 events per second</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>Unlimited max retention</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>$1.20 /GB egressed</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>$1.70 /GB retained</div>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card appMaterialHover (click)="selectPlan(plans[2])" [ngClass]="{'selected-card':selectedPlan === plans[2]}">
+                        <mat-card-title>Business</mat-card-title>
+                        <mat-card-subtitle>$500/month + usage</mat-card-subtitle>
+                        <mat-list>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>10,000 events per second</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>Unlimited max retention</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>$1.20 /GB egressed</div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
+                                <div mat-line>$1.70 /GB retained</div>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <form [formGroup]="tierFormGroup">
+                <div>
+                    <small fzColor textColor="danger" *ngIf="selectedTier?.errors?.required && (selectedTier?.touched)" class="text-danger">
+                        Please select a plan
+                    </small>
+                    <br>
+                    <button mat-button matStepperNext (click)="selectedTier?.markAsTouched()">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="paymentFormGroup" label="Provide payment information">
+                <mat-grid-list cols="3" rowHeight="1:1">
+                    <mat-grid-tile></mat-grid-tile>
+                    <mat-grid-tile>
+                        <form [formGroup]="paymentFormGroup">
+                        <div class="form-group">
+                            <ngx-stripe-card (change)="onChange($event)" [stripe]="stripe" [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                        </div>
+                        <div class="form-group custom-control custom-checkbox">
+                            <input formControlName="acceptTerms" name="acceptTerms" id="acceptTerms" type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="acceptTerms">I agree to the </label><a href="#" class="text-primary"> Terms And Conditions</a> and <a href="#" class="text-primary">Privacy Policy</a>
+                            <br>
+                            <small *ngIf="acceptTerms?.errors?.required && (acceptTerms?.dirty || acceptTerms?.touched)" class="text-danger">
+                                You must agree to the terms and conditions and privacy policy
+                            </small>
+                        </div>
+                        </form>
+                    </mat-grid-tile>
+                    <mat-grid-tile></mat-grid-tile>
+                </mat-grid-list>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="submitPayment()" [disabled]="paymentFormGroup?.invalid">Finish account setup</button>
+                </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Finished</ng-template>
+            <p>Thank you! Your account is set up and ready to use! You will be redirected shortly.</p>
+        </mat-step>
+    </mat-stepper>
+</div>
+
+<fz-modal headerTitle="Payment failed" [centered]="true" backgroundContainer="danger" footerPosition="end" #paymentError>
+    <ng-container content>
+        <p>Payment failed, please try again</p>
+    </ng-container>
+    <ng-container footer>
+        <button fzButton color="light" (click)="paymentError.hide()">Close</button>
+    </ng-container>
+</fz-modal>
+

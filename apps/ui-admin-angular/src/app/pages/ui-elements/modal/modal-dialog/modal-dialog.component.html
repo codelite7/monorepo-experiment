@@ -1,0 +1,160 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Modals</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Modal dialog</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">Modal dialog:</h5>
+
+        <!-- modal basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Modal dialog:
+            </div>
+
+            <button fzButton color="primary" (click)="modal.show()">
+                Open modal general
+            </button>
+
+            <fz-modal-dialog [confirmClose]="true" #modal>
+                <ng-container icon><i class="fas fa-exclamation-circle"></i></ng-container>
+                <div text>
+                    <h5 class="text-center">Are you sure you want to delete?</h5>
+                    <p class="text-center">This cannot be undone in the future.</p>
+                </div>
+                <ng-container buttons>
+                    <button class="mr-2" fzButton [rounded]="true" size="lg" color="primary" (click)="modal.confirm()">
+                        Yes
+                    </button>
+                    <button fzButton [rounded]="true" size="lg" color="dark" (click)="modal.hide()">No</button>
+                </ng-container>
+            </fz-modal-dialog>
+        </fz-card>
+
+        <!-- modal basic and message -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Modal dialog with message error:
+            </div>
+
+            <button fzButton color="danger" (click)="modal1.show()">
+                <i class="fas fa-exclamation-triangle"></i> Open modal error
+            </button>
+
+            <fz-modal-dialog [confirmNotification]="true" #modal1>
+                <ng-container icon><i class="fas fa-exclamation-circle"></i></ng-container>
+                <div text>
+                    <h5 class="text-center">Are you sure you want to delete?</h5>
+                    <p class="text-center">This cannot be undone in the future.</p>
+                </div>
+                <ng-container buttons>
+                    <button class="mr-2" fzButton [rounded]="true" size="lg" color="primary" (click)="modal1.confirm()">
+                        Yes
+                    </button>
+                    <button fzButton [rounded]="true" size="lg" color="dark" (click)="modal1.hide()">No</button>
+                </ng-container>
+                <ng-container notification>
+                    <fz-message-alert type="error" (onClose)="modal1.hide()">
+                        <ng-container title>
+                            Error changing the form
+                        </ng-container>
+                        <ng-container description>
+                            Check that all data is correct
+                        </ng-container>
+                        <ng-container buttons>
+                            <button fzButton color="danger" [rounded]="true" (click)="modal1.notificationBody = false">
+                                Try again
+                            </button>
+                        </ng-container>
+                    </fz-message-alert>
+                </ng-container>
+            </fz-modal-dialog>
+        </fz-card>
+
+        <!-- modal basic and success -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Modal dialog with message success:
+            </div>
+
+            <button fzButton color="success" (click)="modal2.show()">
+                <i class="fas fa-check-circle"></i> Open modal success
+            </button>
+
+            <fz-modal-dialog [confirmNotification]="true" #modal2>
+                <ng-container icon><i class="fas fa-exclamation-circle"></i></ng-container>
+                <div text>
+                    <h5 class="text-center">Are you sure you want to delete?</h5>
+                    <p class="text-center">This cannot be undone in the future.</p>
+                </div>
+                <ng-container buttons>
+                    <button class="mr-2" fzButton [rounded]="true" size="lg" color="primary" (click)="modal2.confirm()">
+                        Yes
+                    </button>
+                    <button fzButton [rounded]="true" size="lg" color="dark" (click)="modal2.hide()">No</button>
+                </ng-container>
+                <ng-container notification>
+                    <fz-message-alert type="success" (onClose)="modal2.hide()">
+                        <ng-container title>
+                            Successfully inserted
+                        </ng-container>
+                        <ng-container description>
+                            Record inserted successfully
+                        </ng-container>
+                        <ng-container buttons>
+                            <button fzButton color="success" [rounded]="true" (click)="modal2.notificationBody = false">
+                                Try again
+                            </button>
+                        </ng-container>
+                    </fz-message-alert>
+                </ng-container>
+            </fz-modal-dialog>
+        </fz-card>
+
+        <!-- modal basic and warning -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Modal dialog with message warning:
+            </div>
+
+            <button fzButton color="warning" (click)="modal3.show()">
+                <i class="fas fa-exclamation"></i> Open modal warning
+            </button>
+
+            <fz-modal-dialog [confirmNotification]="true" #modal3>
+                <ng-container icon><i class="fas fa-exclamation-circle"></i></ng-container>
+                <div text>
+                    <h5 class="text-center">Are you sure you want to delete?</h5>
+                    <p class="text-center">This cannot be undone in the future.</p>
+                </div>
+                <ng-container buttons>
+                    <button class="mr-2" fzButton [rounded]="true" size="lg" color="primary" (click)="modal3.confirm()">
+                        Yes
+                    </button>
+                    <button fzButton [rounded]="true" size="lg" color="dark" (click)="modal3.hide()">No</button>
+                </ng-container>
+                <ng-container notification>
+                    <fz-message-alert type="warning" (onClose)="modal3.hide()">
+                        <ng-container title>
+                            Successfully inserted
+                        </ng-container>
+                        <ng-container description>
+                            Record inserted successfully
+                        </ng-container>
+                        <ng-container buttons>
+                            <button fzButton color="warning" [rounded]="true" (click)="modal3.notificationBody = false">
+                                Try again
+                            </button>
+                        </ng-container>
+                    </fz-message-alert>
+                </ng-container>
+            </fz-modal-dialog>
+        </fz-card>
+
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+<div class="cursor-pointer {{ classBt }}" aria-haspopup="true" fzTip [interactive]="true" [content]="template"
+     [animation]="animation" [trigger]="trigger"
+     [placement]="direction" [arrow]="arrow" [maxWidth]="maxWidth" [zIndex]="zIndex" [initialState]="show"
+     [appendTo]="appendTo"
+     [closeClickOutside]="closeClickOutside" [state]="state" theme="dropdown-theme" tabindex="0"
+     (stateOn)="stateOn.emit($event)">
+    <ng-content select="[button]"></ng-content>
+</div>
+
+<div class="dropdown {{ cTheme }}-{{ hoverItem }}" [ngStyle]="{ 'min-width.px': minWidth }" #template fzDropdownControl>
+    <div class="{{ classContainer }}" [ngClass]="{ 'dropdown-padding': !contentPadding0 }">
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -1,0 +1,267 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Tables</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>General table</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">General table:</h5>
+
+        <!-- actives colors tr -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table active colors tr:
+            </div>
+            <fz-table [dark]="false">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr class="{{ item.class }}" *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- actives shadow tr -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table active shadow tr:
+            </div>
+            <fz-table>
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr class="{{ item.shadow }}" *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- Striped  -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table striped:
+            </div>
+            <fz-table>
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- thead light -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table thead light:
+            </div>
+            <fz-table [theadLight]="true">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- thead dark -->
+        <fz-card class="doc-card-margin" *ngIf="!mainService.getDarkTheme()">
+            <div class="doc-title-card">
+                Table thead dark:
+            </div>
+            <fz-table [theadDark]="true">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- dark -->
+        <fz-card class="doc-card-margin" *ngIf="!mainService.getDarkTheme()">
+            <div class="doc-title-card">
+                Table dark:
+            </div>
+            <fz-table [dark]="true">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- light -->
+        <fz-card class="doc-card-margin" *ngIf="mainService.getDarkTheme()">
+            <div class="doc-title-card">
+                Table light:
+            </div>
+            <fz-table [dark]="false">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- bordered -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table bordered:
+            </div>
+            <fz-table [bordered]="true">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- borderless -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table borderless:
+            </div>
+            <fz-table [borderless]="false">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- small -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table small:
+            </div>
+            <fz-table [small]="true">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- shadow -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table shadow:
+            </div>
+            <fz-table [shadow]="true">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+        <!-- basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Table Basic:
+            </div>
+            <fz-table [striped]="false">
+                <tr header>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr *ngFor="let item of table">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <td>{{ item.col4 }}</td>
+                </tr>
+            </fz-table>
+        </fz-card>
+
+    </div>
+
+</div>

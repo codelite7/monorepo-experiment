@@ -1,0 +1,18 @@
+@import "../../../../sass/bootstrap/variables";
+
+.send-email {
+  display: flex;
+  flex-direction: column;
+}
+
+.send-email-floating {
+  width: 100%;
+  height: auto;
+
+  .send-email-title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-bottom: 1rem;
+  }
+}

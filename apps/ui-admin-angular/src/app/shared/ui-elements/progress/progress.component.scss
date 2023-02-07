@@ -1,0 +1,79 @@
+@import "../../../../sass/bootstrap/variables";
+@import "../../../../sass/bootstrap/mixins";
+
+//
+// Variables
+//
+
+$progress-height: 1rem !default;
+$progress-font-size: $font-size-base * 0.75 !default;
+$progress-bg: $gray-200 !default;
+$progress-border-radius: $border-radius !default;
+$progress-box-shadow: inset 0 0.1rem 0.1rem rgba($black, 0.1) !default;
+$progress-bar-color: $white !default;
+$progress-bar-bg: theme-color("primary") !default;
+$progress-bar-animation-timing: 1s linear infinite !default;
+$progress-bar-transition: width 0.6s ease !default;
+
+// Disable animation if transitions are disabled
+@if $enable-transitions {
+  @keyframes progress-bar-stripes {
+    from {
+      background-position: $progress-height 0;
+    }
+
+    to {
+      background-position: 0 0;
+    }
+  }
+}
+
+.progress {
+  display: flex;
+  height: $progress-height;
+  overflow: hidden; // force rounded corners by cropping it
+  @include font-size($progress-font-size);
+  background-color: $progress-bg;
+  @include border-radius($progress-border-radius);
+  @include box-shadow($progress-box-shadow);
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: $progress-bar-color;
+  text-align: center;
+  white-space: nowrap;
+  background-color: $progress-bar-bg;
+  @include transition($progress-bar-transition);
+}
+
+.progress-bar-striped {
+  @include gradient-striped();
+  background-size: $progress-height $progress-height;
+}
+
+@if $enable-transitions {
+  .progress-bar-animated {
+    animation: progress-bar-stripes $progress-bar-animation-timing;
+
+    @if $enable-prefers-reduced-motion-media-query {
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+  }
+}
+
+//
+//Dark theme
+//
+//
+
+.progress-dark {
+  &.progress {
+    background: $gray-700 !important;
+  }
+}

@@ -1,0 +1,105 @@
+<fz-card class="{{ classArea }}" [paddingBody]="false" [background]="color">
+    <div class="task-area-int">
+
+        <!-- title -->
+        <div class="task-title">
+
+            <strong contenteditable="true" *ngIf="tasks.length">{{ task }}</strong>
+
+            <input *ngIf="tasks.length == 0" fzFocus [focusState]="tasks.length == 0" placeholder="New task" type="text"
+                   [(ngModel)]="task"
+                   (keyup.enter)="openInputSubtask()" class="form-control border-0 mr-2">
+
+            <div class="d-flex">
+                <button *ngIf="task && tasks.length" class="mr-2" fzTip content="New subtask" fzButton color="light"
+                        [circle]="true"
+                        (click)="openInputSubtask()">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <fz-dropdown [state]="stateDrop" (stateOn)="stateDrop = $event">
+                    <button button fzButton color="light" [circle]="true">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+
+                    <a fzDropdownItem href="javascript:void(0);" (click)="discart(tasks)"><i
+                            class="m-right icon  fas fa-trash"></i> Discard everything</a>
+                    <a fzDropdownItem href="javascript:void(0);" *ngIf="showCompleted && tasks.length"
+                       (click)="showCompleted = false">
+                        <i class="m-right icon fas fa-eye-slash"></i> Hide completed
+                    </a>
+                    <a fzDropdownItem href="javascript:void(0);" *ngIf="!showCompleted && tasks.length"
+                       (click)="showCompleted = true">
+                        <i class="m-right icon far fa-eye"></i> Show completed
+                    </a>
+                    <div fzDropdownItem [dividerDI]="true"></div>
+                    <a *ngIf="tasks.length" fzDropdownItem href="javascript:void(0);" (click)="checkAll()"><i
+                            class="m-right icon fas fa-check"></i> Check
+                        all</a>
+                    <a *ngIf="tasks.length" fzDropdownItem href="javascript:void(0);" (click)="uncheckAll()"><i
+                            class="m-right icon fas fa-times"></i>
+                        Uncheck
+                        all</a>
+                    <div fzDropdownItem [dividerDI]="true"></div>
+                    <div fzDropdownItem [headerDI]="true">Colors</div>
+                    <div class="d-flex mb-2">
+                        <a class="mr-2" href="javascript:void(0);" (click)="color = 'info'"><span class="d-flex" fzColor
+                                                                                                  backgroundColor="info"
+                                                                                                  fzImageUtilities
+                                                                                                  [widthHeight]="30"
+                                                                                                  [circle]="true"></span></a>
+                        <a class="mr-2" href="javascript:void(0);" (click)="color = 'teal'"><span class="d-flex" fzColor
+                                                                                                  backgroundColor="teal"
+                                                                                                  fzImageUtilities
+                                                                                                  [widthHeight]="30"
+                                                                                                  [circle]="true"></span></a>
+                        <a class="mr-2" href="javascript:void(0);" (click)="color = 'warning'"><span class="d-flex"
+                                                                                                     fzColor
+                                                                                                     backgroundColor="warning"
+                                                                                                     fzImageUtilities
+                                                                                                     [widthHeight]="30"
+                                                                                                     [circle]="true"></span></a>
+                        <a class="mr-2" href="javascript:void(0);" (click)="color = 'dark'"><span class="d-flex" fzColor
+                                                                                                  backgroundColor="dark"
+                                                                                                  fzImageUtilities
+                                                                                                  [widthHeight]="30"
+                                                                                                  [circle]="true"></span></a>
+                        <a class="mr-2" href="javascript:void(0);" (click)="color = 'white'"><span class="d-flex"
+                                                                                                   fzColor
+                                                                                                   backgroundColor="white"
+                                                                                                   fzImageUtilities
+                                                                                                   [widthHeight]="30"
+                                                                                                   [circle]="true"></span></a>
+                    </div>
+                </fz-dropdown>
+            </div>
+        </div>
+
+        <!-- new subtask -->
+        <div class="new-task" *ngIf="areaInput">
+            <input fzFocus [focusState]="true" placeholder="New subtask" type="text" [(ngModel)]="subtaskInput"
+                   (keyup.enter)="add()" class="form-control">
+        </div>
+
+        <!-- tasks -->
+        <ng-container *ngFor="let item of tasks; let i = index">
+            <div class="task-item custom-control custom-checkbox" *ngIf="ifFilter(item)">
+                <input type="checkbox" class="custom-control-input" id="{{ idArea }}-{{ i }}"
+                       name="{{ idArea }}-{{ i }}" [(ngModel)]="item.completed">
+                <label [ngClass]="{ 'task-completed': item.completed }" class="custom-control-label"
+                       for="{{ idArea }}-{{ i }}">
+                    <span> {{ item.title }}</span>
+                    <a class="close" href="javascript:void(0);" (click)="deleteItem(item)"><i class="fas fa-times"></i></a>
+                </label>
+            </div>
+        </ng-container>
+
+    </div>
+
+    <div bottom *ngIf="tasks.length > 0" class="mt-3">
+        <fz-progress [height]="3">
+            <div fzProgressItem colorPI="primary" [sizePI]="tasksService.calcPorc(completed, tasks.length)">
+            </div>
+        </fz-progress>
+    </div>
+
+</fz-card>

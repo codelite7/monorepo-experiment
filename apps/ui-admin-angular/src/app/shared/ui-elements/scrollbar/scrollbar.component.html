@@ -1,0 +1,5 @@
+<div id="{{ idScrollbar }}" class=" {{ classScrollbar }}"
+     [ngClass]="{ 'scrollbar': scrollbar, 'scrollbar-hide': !scrollbar, 'scrollbar-dark': mainService.getDarkTheme() }"
+     (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+    <ng-content></ng-content>
+</div>

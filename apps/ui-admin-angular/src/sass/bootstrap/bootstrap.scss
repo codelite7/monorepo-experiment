@@ -1,0 +1,44 @@
+/*!
+ * Bootstrap v4.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+//@import "tables"; created component**
+@import "forms";
+@import "buttons";
+@import "transitions";
+//@import "dropdown"; not implemented
+@import "button-group";
+@import "input-group";
+@import "custom-forms";
+//@import "nav"; created component**
+//@import "navbar"; not implemented
+//@import "card"; created component**
+//@import "breadcrumb"; created component**
+//@import "pagination"; created component**
+//@import "badge"; created component**
+//@import "jumbotron"; not implemented
+//@import "alert"; created component**
+//@import "progress"; created component**
+@import "media";
+//@import "list-group"; created component**
+@import "close";
+//@import "toasts"; not implemented
+//@import "modal";  created component**
+//@import "tooltip"; not implemented
+//@import "popover"; not implemented
+//@import "carousel"; not implemented
+//@import "spinners"; not implemented
+@import "utilities";
+@import "print";

@@ -1,0 +1,41 @@
+@import "../../../../../sass/bootstrap/variables";
+@import "src/sass/mixins";
+
+.table-panel {
+  width: 100%;
+  height: auto;
+  border-radius: .5rem;
+  @include shadow-cards();
+  background: $white;
+
+  .table-panel-header {
+    display: flex;
+    padding: 1rem;
+  }
+
+  .table-panel-header-border {
+    border-bottom: 1px solid $gray-200;
+  }
+
+  .table-panel-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .table-panel-desc {
+    display: flex;
+    align-items: center;
+  }
+
+  .table-panel-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .table-panel-t-rows {
+    font-size: 15px;
+  }
+
+}

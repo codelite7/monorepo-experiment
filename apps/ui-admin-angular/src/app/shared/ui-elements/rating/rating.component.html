@@ -1,0 +1,13 @@
+<div class="star-wrapper">
+
+    <div fzColor [textColor]="colorItem(item)" class="py-1 px-1" [ngClass]="{ 'cursor-pointer': !readonly }"
+         *ngFor="let item of stars"
+         (mouseenter)="colorStar(item)" (mouseleave)="reset()" (click)="selected(item)">
+        <i [ngClass]="{ 'star-shadow': shadow }" [class]="icon"></i>
+    </div>
+
+    <div class="star-counter">
+        <ng-content></ng-content>
+    </div>
+
+</div>

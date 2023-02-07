@@ -1,0 +1,30 @@
+<fz-dropdown [state]="state" classBt="header-item" (stateOn)="state = $event">
+
+    <fz-user-image button src="assets/images/user-profile" [widthHeight]="35" state="available"></fz-user-image>
+
+    <h5 fzDropdownItem [headerDI]="true">Fernando Zueet</h5>
+
+    <a fzDropdownItem href="javascript:void(0);" routerLink="email" (click)="state = false"><i
+            class="icon m-right fas fa-envelope"></i> My
+        inbox </a>
+    <a fzDropdownItem href="javascript:void(0);" routerLink="tasks" (click)="state = false"><i
+            class="icon m-right fas fa-tasks"></i> My
+        Tasks </a>
+
+    <div fzDropdownItem [dividerDI]="true"></div>
+
+    <a fzDropdownItem href="javascript:void(0);" (click)="mainService.openModalSettings()">
+        <i class="icon m-right fas fa-cog"></i> Settings
+    </a>
+
+    <a fzDropdownItem href="javascript:void(0);" (click)="fullScreen()"><i class="icon m-right fas fa-expand"></i> Full
+        screen </a>
+
+    <div fzDropdownItem [dividerDI]="true"></div>
+
+    <a fzDropdownItem href="javascript:void(0);" routerLink="lockscreen"><i class="icon m-right fas fa-user-lock"></i>
+        Lockscreen </a>
+    <a fzDropdownItem href="javascript:void(0);" routerLink="login"><i class="icon m-right fas fa-sign-out-alt"></i> Log
+        out </a>
+
+</fz-dropdown>

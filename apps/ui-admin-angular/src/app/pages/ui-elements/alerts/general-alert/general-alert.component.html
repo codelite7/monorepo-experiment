@@ -1,0 +1,85 @@
+<div class="content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Alerts</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>General alert</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">General alert:</h5>
+
+        <!-- alert basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Alert basic:
+            </div>
+
+            <fz-alert *ngFor="let item of colorsT" [color]="item">
+                A simple {{ item }} alert with <a class="alert-link" href="javascript:void(0);">an example link</a>.
+                Give it a click if you like.
+            </fz-alert>
+
+        </fz-card>
+
+        <!-- alert colors -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Alert colors:
+            </div>
+
+            <fz-alert *ngFor="let item of colors" [color]="item">
+                A simple {{ item }} alert with <a class="alert-link" href="javascript:void(0);">an example link</a>.
+                Give it a click if you like.
+            </fz-alert>
+
+        </fz-card>
+
+        <!-- alert Additional content -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Alert additional content:
+            </div>
+
+            <fz-alert color="orange" [buttonClose]="true">
+                <h4 class="alert-heading">Well done!</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
+                    longer so that you can see how
+                    spacing within an alert works with this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            </fz-alert>
+
+        </fz-card>
+
+        <!-- alert close -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Alert close:
+            </div>
+
+            <fz-alert color="pink" [buttonClose]="true">
+                A simple alert with <a class="alert-link" href="javascript:void(0);">an example link</a>. Give it a
+                click if you like.
+            </fz-alert>
+
+        </fz-card>
+
+        <!-- alert close -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Alert close time:
+            </div>
+
+            <fz-alert color="teal" [buttonClose]="true" [timeClose]="timeClose">
+                A simple alert with <a class="alert-link" href="javascript:void(0);">an example link</a>. Give it a
+                click if you like.
+            </fz-alert>
+
+            <button class="mt-2" fzButton color="primary" (click)="timeClose = 2000">Close alert in 2 seconds</button>
+        </fz-card>
+
+    </div>
+
+</div>

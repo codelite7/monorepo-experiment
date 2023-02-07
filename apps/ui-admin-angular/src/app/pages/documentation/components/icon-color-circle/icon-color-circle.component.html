@@ -1,0 +1,70 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Documentation</fz-breadcrumb-item>
+        <fz-breadcrumb-item>Components</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Icon color circle</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area"><code>fz-icon-color-circle</code></h5>
+
+        <div class="mb-3">
+            To use the component, import the <code> SharedModule </code> module into your module.
+        </div>
+
+        <!-- example -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Example:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-icon-color-circle class="mr-3" size="35" color="primary"
+                                      icon="fas fa-address-book"></fz-icon-color-circle>
+                <fz-icon-color-circle class="mr-3" size="35" color="success"
+                                      icon="fas fa-air-freshener"></fz-icon-color-circle>
+                <fz-icon-color-circle class="mr-3" size="35" color="danger"
+                                      icon="fab fa-amazon-pay"></fz-icon-color-circle>
+                <fz-icon-color-circle class="mr-3" size="35" color="info"
+                                      icon="fas fa-ambulance"></fz-icon-color-circle>
+                <fz-icon-color-circle class="mr-3" size="35" color="warning"
+                                      icon="fas fa-address-card"></fz-icon-color-circle>
+                <fz-icon-color-circle class="mr-3" size="35" color="indigo"
+                                      icon="fas fa-baby-carriage"></fz-icon-color-circle>
+                <fz-icon-color-circle class="mr-3" size="35" color="pink" icon="fas fa-award"></fz-icon-color-circle>
+                <fz-icon-color-circle class="mr-3" size="35" color="dark" icon="fas fa-archway"></fz-icon-color-circle>
+            </div>
+        </fz-card>
+
+        <!-- example code -->
+        <fz-card class="mt-3">
+            <div class="doc-title-card">
+                Example code:
+            </div>
+            <pre class="mb-0"><code [highlight]="example"></code></pre>
+        </fz-card>
+
+        <!-- input -->
+        <h5 class="doc-title-area">Input: </h5>
+        <fz-table-doc class="doc-card-margin" type="input">
+            <tr *ngFor="let item of inputs">
+                <td><code>{{ item.attribute }}</code></td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.default }}</td>
+                <td>
+                    <ng-container *ngIf="item.actions"><a href="javascript:void(0);"
+                                                          (click)="modalColors.show(item.actions)">{{ item.type }}</a>
+                    </ng-container>
+                    <ng-container *ngIf="!item.actions">{{ item.type }}</ng-container>
+                </td>
+                <td class="text-center">{{ item.required }}</td>
+            </tr>
+        </fz-table-doc>
+
+        <fz-modal-doc-colors #modalColors></fz-modal-doc-colors>
+
+    </div>
+</div>
