@@ -8,7 +8,7 @@ import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingGeneralService } from '@main/loading-general/loading-general.service';
 import { PaymentMethod } from '@swarm-io/protos-api/dist/nodejs/swarm/v1alpha1/api';
-import { environment} from "../../../../../../environments/environment";
+import {environment} from "../../../../../../environments/environment";
 
 @Component({
   selector: 'app-billing',
@@ -50,7 +50,7 @@ export class BillingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.stripe = this.stripeFactory.create(this.environment.stripePublicKey);
+    this.stripe = this.stripeFactory.create(environment.stripePublicKey);
     this.mainNavService.selectedItem('nav-billing');
     this.titleService.setTitle('Billing - Swarm IO');
     this.billingService.getPaymentMethods().subscribe(

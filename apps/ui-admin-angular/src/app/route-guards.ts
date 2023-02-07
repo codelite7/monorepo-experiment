@@ -1,24 +1,16 @@
 import { map, mergeMap } from 'rxjs/operators';
 import { redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
 import firebase from 'firebase/compat';
-import {
-    ActivatedRoute,
-    ActivatedRouteSnapshot,
-    CanActivateChild,
-    Router,
-    RouterStateSnapshot,
-    UrlTree
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import User = firebase.User;
 
-export const redirectLoggedInToDashboard = () => redirectLoggedInTo(['console']);
+export const redirectLoggedInToDashboard = () => redirectLoggedInTo(['console/dashboard']);
 
 const changePasswordPath = '/console/account/changepassword';
 const accountPath = '/console/account';
-const newAccountPath = '/console/account/new';
 
 export const verifyEmailGuard = () =>
   map((user: User) => {
@@ -55,10 +47,7 @@ export const newSubscriptionGuard = () =>
 
 @Injectable()
 export class ConsoleGuard implements CanActivateChild {
-  constructor(
-      public router: Router,
-      private auth: AngularFireAuth,
-  ) {}
+  constructor(public router: Router, private auth: AngularFireAuth) {}
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
     return combineLatest([this.auth.user, this.auth.idTokenResult]).pipe(
@@ -72,9 +61,6 @@ export class ConsoleGuard implements CanActivateChild {
         } else {
           const subscriptionStatus = idTokenResult?.claims?.subscriptionStatus;
           const requirePasswordReset = idTokenResult?.claims?.requirePasswordReset;
-          if (subscriptionStatus === undefined && state.url !== newAccountPath) {
-              return this.router.createUrlTree([newAccountPath])
-          }
           if (subscriptionStatus === 'cancelled') {
             // subscription has been cancelled, only allow /console/account path
             if (state.url.startsWith(accountPath)) {

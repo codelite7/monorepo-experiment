@@ -58,11 +58,13 @@ export class ChangepasswordComponent implements OnInit {
       { validators: passwordsMatchValidator }
     );
     // check token, to see if password reset is required
-    this.auth.idTokenResult
+      this.auth.idTokenResult
       .pipe(
+        // @ts-ignore
         first(),
         map((token) => {
-          return token?.claims?.requirePasswordReset === true;
+          // @ts-ignore
+            return token?.claims?.requirePasswordReset === true;
         })
       )
       .subscribe((requirePasswordReset) => {

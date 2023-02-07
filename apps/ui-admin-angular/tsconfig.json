@@ -19,7 +19,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "lib": [
-      "es2020",
+      "es2018",
       "dom",
       "esnext.bigint"
     ],

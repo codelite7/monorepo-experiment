@@ -7,8 +7,8 @@ import { AccountsService, Subdomain } from '@services/account/accounts.service';
 import { NotificationService } from '@main/notification/notification.service';
 import { LoadingGeneralService } from '@main/loading-general/loading-general.service';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ConfigService } from '@services/config/config.service';
 import { ModalComponent } from '@shared/ui-elements/modal/modal.component';
+import { environment } from "../../../../../../environments/environment";
 
 @Component({
   selector: 'app-profile',
@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
     private accountsService: AccountsService,
     public notificationService: NotificationService,
     public loadingService: LoadingGeneralService,
-    private configService: ConfigService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +62,7 @@ export class ProfileComponent implements OnInit {
     this.subdomainForm = this.fb.group({
       subdomain: [this.subdomainToSet, [Validators.required, Validators.pattern(this.subdomainPattern)]],
     });
-    this.domain = this.configService.config.domain;
+    this.domain = environment.domain;
   }
 
   getTierText(): string {
@@ -118,14 +117,17 @@ export class ProfileComponent implements OnInit {
   setClaims(): void {
     this.auth.idTokenResult
       .pipe(
+        // @ts-ignore
         first(),
         finalize(() => {
           this.loadingService.hide();
         })
       )
       .subscribe((token) => {
+        // @ts-ignore
         this.claims = token!.claims;
         if (this.subdomain.subdomain === '') {
+          // @ts-ignore
           this.subdomain.subdomain = token!.claims.accountUuid.toLowerCase();
           this.initializeSubdomainFormValue(this.subdomain.subdomain);
         }

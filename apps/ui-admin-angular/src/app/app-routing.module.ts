@@ -2,15 +2,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { ConsoleGuard, redirectLoggedInToDashboard } from './route-guards';
-import {FirebaseLoginComponent} from "@shared/firebase-login/firebase-login.component";
 
 const routes: Routes = [
-    { path: 'firebaselogin',
-        component: FirebaseLoginComponent,
-        canActivate: [AngularFireAuthGuard],
-        data: { authGuardPipe: redirectLoggedInToDashboard }
-    },
-    // empty path redirects to console
+  // empty path redirects to console
   { path: '', redirectTo: 'console', pathMatch: 'full' },
   // console is authenticated path for verified, active subscriptions
   {

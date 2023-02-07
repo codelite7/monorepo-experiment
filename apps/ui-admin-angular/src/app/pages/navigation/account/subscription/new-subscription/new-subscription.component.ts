@@ -9,8 +9,8 @@ import { StripeCardComponent, StripeFactoryService, StripeInstance } from 'ngx-s
 import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
 import { first, switchMap } from 'rxjs/operators';
 import { AccountsService } from '@services/account/accounts.service';
-import { environment } from "../../../../../../environments/environment";
 import { of } from 'rxjs';
+import { environment } from "../../../../../../environments/environment";
 
 @Component({
   selector: 'app-new-subscription',

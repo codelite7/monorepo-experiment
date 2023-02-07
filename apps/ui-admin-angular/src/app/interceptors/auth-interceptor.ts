@@ -9,7 +9,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: AngularFireAuth) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // @ts-ignore
     return this.auth.idToken.pipe(
+      // @ts-ignore
       take(1), // <-------------- Only emit the first value!
       switchMap((token: any) => {
         if (token) {

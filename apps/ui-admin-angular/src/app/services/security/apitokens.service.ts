@@ -37,7 +37,6 @@ export class ApitokensService {
         },
       })
       .pipe(
-        // @ts-ignore
         map(({ data }) => {
           return true;
         })
@@ -45,7 +44,7 @@ export class ApitokensService {
   }
 
   deleteApitoken(name: string): Observable<any> {
-      return this.apollo
+    return this.apollo
       .mutate({
         mutation: deleteApiTokenQuery,
         variables: {
@@ -55,8 +54,7 @@ export class ApitokensService {
         },
       })
       .pipe(
-          // @ts-ignore
-          map(({ data }) => {
+        map(({ data }) => {
           return true;
         })
       );

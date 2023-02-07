@@ -19,4 +19,5 @@ export const environment = {
     stripePublicKey: "pk_live_dPFP0hYqPLsrIwBqEQshtDz400OpnUr2lc",
     usersApiBaseUrl: "https://api.swarmiolabs.com",
     webhooksApiBaseUrl: "https://api.swarmiolabs.com",
+    graphqlBaseUrl: "https://api.swarmiolabs.com",
 };

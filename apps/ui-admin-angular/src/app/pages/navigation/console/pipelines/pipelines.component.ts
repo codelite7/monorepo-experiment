@@ -10,9 +10,7 @@ import { finalize, first, map, mergeMap, switchMap } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder } from '@angular/forms';
 import { ResetPositionComponent } from '@shared/reset-position/reset-position.component';
-import { ConfigService } from '@services/config/config.service';
-import { Observable } from 'rxjs';
-import { flatMap } from 'lodash';
+import { environment } from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-pipelines',
@@ -36,7 +34,6 @@ export class PipelinesComponent implements OnInit {
     private notificationService: NotificationService,
     private loadingService: LoadingGeneralService,
     private auth: AngularFireAuth,
-    private configService: ConfigService
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +44,7 @@ export class PipelinesComponent implements OnInit {
       (pipelines) => (this.pipelines = pipelines),
       (error) => this.notificationService.error('Refresh the page to try again', 'Error loading pipelines')
     );
-    this.domain = this.configService.config.domain;
+    this.domain = environment.domain;
   }
 
   deletePipeline(): void {
@@ -76,7 +73,9 @@ export class PipelinesComponent implements OnInit {
   }
 
   setClaims(): void {
+    // @ts-ignore
     this.auth.idTokenResult.pipe(first()).subscribe((token) => {
+      // @ts-ignore
       this.claims = token?.claims;
     });
   }

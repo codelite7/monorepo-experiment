@@ -107,8 +107,3 @@ dist
 node_modules
 dist
 src/assets/overrides.json
-
-# Firebase
-.firebase
-*-debug.log
-.runtimeconfig.json

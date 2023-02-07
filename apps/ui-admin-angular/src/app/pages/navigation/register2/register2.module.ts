@@ -6,7 +6,7 @@ import { SharedModule } from '@shared/shared.module';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MainModule } from '@main/main.module';
-import { ConfigService } from '@services/config/config.service';
+import { environment } from "../../../../environments/environment";
 
 const routes: Routes = [{ path: '', component: Register2Component }];
 

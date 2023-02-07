@@ -73,7 +73,9 @@ export class InvoicesComponent implements OnInit {
   }
 
   setClaims(): void {
+    // @ts-ignore
     this.auth.idTokenResult.pipe(first()).subscribe((token) => {
+      // @ts-ignore
       this.claims = token?.claims;
     });
   }

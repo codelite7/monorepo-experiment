@@ -15,9 +15,9 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ClipboardModule } from 'ngx-clipboard';
-import { APP_CONFIG, environment } from '../environment';
 import { GraphQLModule } from './graphql.module';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [AppComponent, MainComponent],
@@ -41,20 +41,17 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: FIREBASE_OPTIONS, // provides the firebase config which allows lazy loading by merging overrides with defaults
-      useValue: environment.config.firebase,
-    },
-    {
-      provide: APP_CONFIG, // provides lazy loaded config via an injectable
-      useValue: environment.config,
+      useValue: environment.firebase,
     },
     {
       provide: RECAPTCHA_V3_SITE_KEY,
-      useValue: environment.config.recaptchaPublicKey,
+      useValue: environment.recaptchaPublicKey,
     },
     DatePipe,
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/highlight'),
         lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
         languages: {
           typescript: () => import('highlight.js/lib/languages/typescript'),

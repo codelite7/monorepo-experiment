@@ -37,7 +37,6 @@
               ]
             },
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "node_modules/animate.css/animate.min.css",
               "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
@@ -129,7 +128,6 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -149,13 +147,7 @@
         },
         "deploy": {
           "builder": "@angular/fire:deploy",
-          "options": {
-            "prerender": false,
-            "ssr": false,
-            "browserTarget": "app:build:production",
-            "firebaseProject": "swarm-dev-306823",
-            "firebaseHostingSite": "swarm-dev-306823"
-          }
+          "options": {}
         }
       }
     }
