@@ -111,8 +111,8 @@
             "browserTarget": "app:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "app:build:production"
+            "prod": {
+              "browserTarget": "app:build:prod"
             }
           }
         },
@@ -146,8 +146,8 @@
             "devServerTarget": "app:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "app:serve:production"
+            "prod": {
+              "devServerTarget": "app:serve:prod"
             }
           }
         },
