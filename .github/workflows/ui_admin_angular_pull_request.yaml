@@ -28,4 +28,7 @@ jobs:
           working-directory: apps/ui-admin-angular
       - name: build production release
         working-directory: apps/ui-admin-angular
-        run: npm ci && npm run build-prod
+        run: |
+          npm run co:login
+          npm ci
+          npm run build-prod
