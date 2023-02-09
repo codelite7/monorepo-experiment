@@ -34,12 +34,11 @@ jobs:
           npm ci
           npm run build-prod
       - name: zip production release
-        working-directory: apps/ui-admin-angular
         uses: thedoctor0/zip-release@0.7.1
         with:
           type: 'zip'
           filename: 'release.zip'
-          path: dist/app
+          path: apps/ui-admin-angular/dist/app
       - name: Release
         run: npx semantic-release
         env:
