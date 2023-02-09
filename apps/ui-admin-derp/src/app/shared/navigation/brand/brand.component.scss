@@ -1,0 +1,27 @@
+@import "../../../../sass/bootstrap/variables";
+@import "../../../../sass/bootstrap/mixins";
+
+.name-dash {
+  height: auto;
+  display: flex;
+  font-size: 24px;
+  font-weight: 200;
+
+  &.large {
+    font-size: 35px;
+  }
+
+  &.e-large {
+    font-size: 50px;
+  }
+
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  b {
+    margin-right: 11px;
+    letter-spacing: -0.3rem;
+    font-weight: 700;
+  }
+}

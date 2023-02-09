@@ -1,0 +1,113 @@
+@import "../../../sass/bootstrap/variables";
+@import "../../../sass/bootstrap/mixins";
+@import "src/sass/mixins";
+
+//
+// Variables
+
+$height-header: 49px;
+
+//
+// Code
+//
+
+.main-header {
+  width: 100%;
+  height: $height-header;
+}
+
+.main-header-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.main-header-content {
+  width: 100%;
+  height: $height-header;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  .header-item {
+    display: flex;
+    font-size: 21px;
+    padding: 1.1rem;
+
+    &:hover {
+      text-decoration: none;
+      transition: linear .2s;
+      @include fz-box-shadow(-1px 7px 15px -2px rgba($black, 0.18));
+    }
+  }
+
+  .header-item-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .name-dash-area {
+    display: flex;
+    align-items: center;
+
+    .colapse-navbar {
+      display: flex;
+      padding: 1.1rem;
+    }
+
+    .name-dash {
+      margin-bottom: 2px;
+    }
+  }
+
+  .header-search {
+    width: 400px;
+  }
+}
+
+//
+//Themes 
+//
+
+@mixin header-theme($color, $value) {
+  .main-header-theme-#{$color} {
+    $colorPure: $value;
+    $colorBase: darken($colorPure, 4);
+    background: $colorPure;
+    $colorShadow: darken($colorPure, 30);
+
+    @if $color !='white' {
+      background: darken($colorBase, 5);
+      background: linear-gradient(to top, darken($colorBase, 3) 0%, darken($colorBase, 5) 100%);
+    }
+
+    &.main-header {
+      @include fz-box-shadow(-1px 7px 15px -6px rgba($colorShadow, 0.27));
+    }
+
+    .header-item {
+      color: rgba(color-yiq($colorBase), 0.9);
+
+      &:hover {
+        color: color-yiq($colorBase);
+        background: rgba($colorBase, 0.070);
+      }
+    }
+
+    .name-dash-area {
+      background: rgba(darken($colorBase, 2), 0.3);
+      color: rgba(color-yiq($colorBase), 0.9);
+
+      a {
+        color: rgba(color-yiq($colorBase), 0.9);
+      }
+    }
+  }
+}
+
+@each $color,
+$value in $colors {
+  @include header-theme($color, $value);
+}

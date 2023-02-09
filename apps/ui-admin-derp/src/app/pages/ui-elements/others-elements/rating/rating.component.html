@@ -1,0 +1,113 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Others elements</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Ratings</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">RATINGS:</h5>
+
+        <!-- basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Basic rating:
+            </div>
+
+            <div class="d-flex flex-column">
+                <h4>
+                    <fz-rating [(rate)]="rate" [shadow]="false">{{ rate }}</fz-rating>
+                </h4>
+                <h4>
+                    <fz-rating [(rate)]="rate" icon="fas fa-heart" [shadow]="false" colorActive="danger"></fz-rating>
+                </h4>
+                <h4>
+                    <fz-rating [(rate)]="rate" icon="fas fa-ice-cream" [shadow]="false" colorActive="pink"></fz-rating>
+                </h4>
+                <h4>
+                    <fz-rating [(rate)]="rate" icon="fas fa-grin" [shadow]="false" colorActive="teal"></fz-rating>
+                </h4>
+
+                <div>
+                    <strong>Rate:</strong> {{ rate }}
+                </div>
+            </div>
+
+        </fz-card>
+
+        <!-- sizes -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Several colors and stars:
+            </div>
+
+            <div class="d-flex flex-column">
+                <h3>
+                    <fz-rating [(rate)]="rate3" [max]="6"
+                               [colorsActive]="['danger', 'danger', 'warning', 'warning', 'teal', 'teal']">
+                    </fz-rating>
+                </h3>
+
+                <h3>
+                    <fz-rating [(rate)]="rate3" [max]="12"></fz-rating>
+                </h3>
+
+                <div>
+                    <strong>Rate:</strong> {{ rate3 }}
+                </div>
+            </div>
+
+        </fz-card>
+
+        <!-- sizes -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Sizes rating:
+            </div>
+
+            <div class="d-flex flex-column">
+                <h1>
+                    <fz-rating [(rate)]="rate2" [shadow]="false"></fz-rating>
+                </h1>
+                <h2>
+                    <fz-rating [(rate)]="rate2" [shadow]="false"></fz-rating>
+                </h2>
+                <h3>
+                    <fz-rating [(rate)]="rate2" [shadow]="false"></fz-rating>
+                </h3>
+                <h4>
+                    <fz-rating [(rate)]="rate2" [shadow]="false"></fz-rating>
+                </h4>
+                <small class="mb-2">
+                    <fz-rating [(rate)]="rate2" [shadow]="false"></fz-rating>
+                </small>
+
+                <div>
+                    <strong>Rate:</strong> {{ rate2 }}
+                </div>
+            </div>
+
+        </fz-card>
+
+        <!-- readonly -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Readonly rating:
+            </div>
+
+            <div class="d-flex flex-column">
+                <h1>
+                    <fz-rating [(rate)]="rate4" [readonly]="true">{{ rate4 }}</fz-rating>
+                </h1>
+                <h1>
+                    <fz-rating [(rate)]="rate4" [readonly]="true" icon="fas fa-heart" [shadow]="false"
+                               colorActive="danger"></fz-rating>
+                </h1>
+            </div>
+
+        </fz-card>
+
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Tables</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Complete table</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">Complete table:</h5>
+
+        <!-- table complete -->
+        <fz-panel-table class="doc-card-margin mt-4">
+
+            <!-- header -->
+            <ng-container desc>
+                <i class="mr-2 fas fa-user"></i> USERS
+            </ng-container>
+
+            <ng-container search>
+                <input type="text" placeholder="Search..." name="search" [(ngModel)]="search" class="form-control">
+            </ng-container>
+
+            <ng-container actions>
+                <fz-dropdown direction="left-start">
+                    <a button fzButton color="secondary" href="javascript:void(0);">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-plus-circle"></i> Add
+                        user</a>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-file-export"></i> Export
+                        users </a>
+                </fz-dropdown>
+            </ng-container>
+
+            <!-- table -->
+            <fz-table table *ngIf="(table | fzFilter: search).length > 0">
+                <tr header>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Profession</th>
+                    <th>City</th>
+                    <th class="text-center">State</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let item of table | fzFilter: search;">
+                    <th>{{ item.id }}</th>
+                    <td><img class="mr-2" fzImageUtilities [circle]="true" [crop]="true" [widthHeight]="32"
+                             src="assets/images/{{ item.img }}.jpg">
+                        {{ item.name }}</td>
+                    <td>{{ item.profession }}</td>
+                    <td>{{ item.city }}</td>
+                    <td class="text-center">
+                        <fz-badge [pill]="true"
+                                  [color]="item.state == 'Active' ? 'success' : 'light'">{{ item.state }}</fz-badge>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-end">
+                            <a fzTip content="Edit user" class="mr-2" href="javascript:void(0);">
+                                <fz-icon-color-circle color="secondary" icon="fas fa-pen-square"></fz-icon-color-circle>
+                            </a>
+                            <a fzTip content="Delete user" href="javascript:void(0);">
+                                <fz-icon-color-circle color="danger" icon="fas fa-trash"></fz-icon-color-circle>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </fz-table>
+
+            <div class="pl-3 pt-3" table *ngIf="(table | fzFilter: search).length == 0">
+                No results found for <strong>"{{ search }}"</strong>.
+            </div>
+
+            <!-- footer -->
+            <ng-container tRows *ngIf="(table | fzFilter: search).length > 0">{{ (table | fzFilter: search).length }}
+                rows
+            </ng-container>
+
+            <fz-pagination *ngIf="(table | fzFilter: search).length > 0" pagination
+                           [rows]="(table | fzFilter: search).length" [perPage]="10"
+                           [actionNumbers]="false" [textBtNextPrev]="false"></fz-pagination>
+
+        </fz-panel-table>
+    </div>
+
+</div>

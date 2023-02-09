@@ -1,0 +1,134 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Others elements</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Buttons</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">Buttons:</h5>
+
+        <!-- button basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Buttons basic:
+            </div>
+
+            <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [color]="item">{{ item }}</button>
+            <button class="mr-2 mb-2" fzButton> Link</button>
+
+        </fz-card>
+
+        <!-- button others colors -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Others colors:
+            </div>
+
+            <button class="mr-2 mb-2" *ngFor="let item of colors2" fzButton [color]="item">{{ item }}</button>
+
+        </fz-card>
+
+        <!-- button outline -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Button outline:
+            </div>
+
+            <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [outline]="true"
+                    [color]="item">{{ item }}</button>
+
+        </fz-card>
+
+        <!-- button general -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Button general:
+            </div>
+
+            <button class="mr-2 mb-2" fzButton color="primary" [activeB]="true">Active</button>
+            <button class="mr-2 mb-2" fzButton color="primary" [disabledB]="true">Disabled</button>
+            <button class="mr-2 mb-2" fzButton color="primary"><i class="fas fa-air-freshener"></i> Icon</button>
+            <button class="mr-2 mb-2" fzButton color="primary">Icon 2 <i class="fab fa-android"></i></button>
+            <button class="mr-2 mb-2" fzButton color="primary"><i class="fas fa-spinner fa-pulse"></i> Loading</button>
+        </fz-card>
+
+        <!-- button rounded -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Button rounded:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [rounded]="true"
+                        [color]="item">{{ item }}</button>
+            </div>
+            <div class="d-flex flex-wrap mt-2">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [rounded]="true" [outline]="true"
+                        [color]="item">{{ item }}</button>
+            </div>
+        </fz-card>
+
+        <!-- button circle -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Button circle:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [circle]="true" [color]="item"><i
+                        class="fas fa-ambulance"></i></button>
+            </div>
+            <div class="d-flex flex-wrap mt-2">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [circle]="true" [outline]="true"
+                        [color]="item"><i
+                        class="fas fa-ambulance"></i></button>
+            </div>
+        </fz-card>
+
+        <!-- button long -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Button long:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [lrLargeB]="true"
+                        [color]="item">{{ item }}</button>
+            </div>
+            <div class="d-flex flex-wrap mt-2">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton [lrLargeB]="true" [outline]="true"
+                        [color]="item">{{ item }}</button>
+            </div>
+        </fz-card>
+
+        <!-- button sizes -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Button sizes:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton size="sm"
+                        [color]="item">{{ item }}</button>
+            </div>
+            <div class="d-flex flex-wrap mt-2">
+                <button class="mr-2 mb-2" *ngFor="let item of colors" fzButton size="lg"
+                        [color]="item">{{ item }}</button>
+            </div>
+        </fz-card>
+
+        <!-- button center block -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Button center block:
+            </div>
+
+            <button class="mr-2 mb-2" fzButton color="primary" [blockB]="true">Center block</button>
+
+        </fz-card>
+
+    </div>
+</div>

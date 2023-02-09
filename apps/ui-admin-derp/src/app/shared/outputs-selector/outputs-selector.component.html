@@ -1,0 +1,30 @@
+<div [formGroup]="parentForm">
+    <div [formGroupName]="formGroupName">
+        <p-multiSelect
+                id="{{id}}-nested"
+                [options]="outputs"
+                formControlName="outputs"
+                defaultLabel="Outputs"
+                optionLabel="name"
+                optionValue="id"
+                selectedItemsLabel="{0} items selected"
+                display="chip"
+                class="fullwidth"
+        >
+        </p-multiSelect>
+    </div>
+<!--    <div *ngIf="!formGroupName">-->
+<!--        <p-multiSelect-->
+<!--                id="{{id}}"-->
+<!--                [options]="outputs"-->
+<!--                formControlName="outputs"-->
+<!--                defaultLabel="Outputs"-->
+<!--                optionLabel="name"-->
+<!--                optionValue="id"-->
+<!--                selectedItemsLabel="{0} items selected"-->
+<!--                display="chip"-->
+<!--                class="fullwidth"-->
+<!--        >-->
+<!--        </p-multiSelect>-->
+<!--    </div>-->
+</div>

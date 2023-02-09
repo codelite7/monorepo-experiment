@@ -1,0 +1,83 @@
+<!-- logo area -->
+<div class="nav-logo" [ngClass]="{ 'justify-content-center': !mainService.getNavStateBackdrop() }">
+    <fz-brand [ngClass]="{ 'order-1': mainService.getNavPosition() == 'right' }"></fz-brand>
+    <a href="javascript:void(0);" [ngClass]="{ 'order-0': mainService.getNavPosition() == 'right' }" class="icon-close"
+       (click)="mainService.colapseNav()" *ngIf="mainService.getNavStateBackdrop()">
+        <i class="fas fa-bars"></i>
+    </a>
+</div>
+
+<fz-scrollbar classScrollbar="main-nav-scrollbar-area">
+    <div class="animated fadeIn" *ngIf="mainNavService.nav == 1">
+
+        <!-- nav NAVIGATION -->
+<!--        <div class="main-nav-title">-->
+<!--            NAVIGATION-->
+<!--        </div>-->
+
+        <!-- DASHBOARD -->
+        <fz-main-nav-group classGroup="mt-2">
+            <fz-main-nav-item tabindex="-1" routerLink="/console" name="nav-dashboard">
+                <fz-icon-color-circle icon color="pink" icon="fas fa-chart-line" size="22"></fz-icon-color-circle>
+                <ng-container text>Dashboard</ng-container>
+            </fz-main-nav-item>
+        </fz-main-nav-group>
+
+        <!-- pipelines -->
+        <fz-main-nav-group classGroup="mt-2">
+            <fz-main-nav-item tabindex="-1" routerLink="console/pipelines" name="nav-pipelines">
+                <fz-icon-color-circle icon color="primary" icon="fas fa-code-branch" size="22"></fz-icon-color-circle>
+                <ng-container text>Pipelines</ng-container>
+            </fz-main-nav-item>
+        </fz-main-nav-group>
+
+        <!-- actions pages -->
+        <fz-main-nav-item name="action-pages">
+            <fz-icon-color-circle icon color="orange" icon="fas fa-server" size="22"></fz-icon-color-circle>
+            <ng-container text>Actions</ng-container>
+            <ng-container subitem>
+                <fz-main-nav-subitem tabindex="-1" routerLink="/console/actions/webhooks" name="nav-webhooks">Webhooks</fz-main-nav-subitem>
+            </ng-container>
+        </fz-main-nav-item>
+
+        <!-- security pages -->
+        <fz-main-nav-item name="security-pages">
+            <fz-icon-color-circle icon color="danger" icon="fas fa-shield-alt" size="22"></fz-icon-color-circle>
+            <ng-container text>Security</ng-container>
+            <ng-container subitem>
+                <fz-main-nav-subitem tabindex="-1" routerLink="/console/security/apitokens" name="nav-apitokens">Api Tokens</fz-main-nav-subitem>
+                <fz-main-nav-subitem tabindex="-1" routerLink="/console/security/users" name="nav-users">Users</fz-main-nav-subitem>
+            </ng-container>
+        </fz-main-nav-item>
+
+        <!-- account pages -->
+        <fz-main-nav-item name="account-pages">
+            <fz-icon-color-circle icon color="success" icon="fas fa-user" size="22"></fz-icon-color-circle>
+            <ng-container text>Account</ng-container>
+            <ng-container subitem>
+                <fz-main-nav-subitem tabindex="-1" routerLink="/console/account/profile" name="nav-profile">Profile</fz-main-nav-subitem>
+                <fz-main-nav-subitem tabindex="-1" routerLink="/console/account/billing" name="nav-billing">Billing</fz-main-nav-subitem>
+                <fz-main-nav-subitem tabindex="-1" routerLink="/console/account/invoices" name="nav-invoices">Invoices</fz-main-nav-subitem>
+                <fz-main-nav-subitem tabindex="-1" routerLink="/console/account/changepassword" name="nav-changepassword">Change Password</fz-main-nav-subitem>
+            </ng-container>
+        </fz-main-nav-item>
+    </div>
+</fz-scrollbar>
+
+<!-- ================================= -->
+<!-- nav horizontal -->
+<div class="main-nav-horizontal main-nav-bg-featured">
+    <a class="item" href="javascript:void(0);" fzTip content="Settings" (click)="mainService.openModalSettings()">
+        <i class="fas fa-cog"></i>
+    </a>
+<!--    <a class="item" href="javascript:void(0);" (click)="mainService.fullScreenWindowId('main')" fzTip-->
+<!--       content="Full screen">-->
+<!--        <i class="fas fa-expand"></i>-->
+<!--    </a>-->
+<!--    <a class="item" href="javascript:void(0);" routerLink="lockscreen" fzTip content="Lockscreen">-->
+<!--        <i class="fas fa-user-lock"></i>-->
+<!--    </a>-->
+    <a class="item" href="javascript:void(0);" (click)="logout()" fzTip content="log out">
+        <i class="fas fa-sign-out-alt"></i>
+    </a>
+</div>

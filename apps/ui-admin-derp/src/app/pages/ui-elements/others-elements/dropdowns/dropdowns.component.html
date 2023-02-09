@@ -1,0 +1,257 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Others elements</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Dropdowns</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">Dropdowns:</h5>
+
+        <!-- geral template -->
+        <ng-template #geralTemplate>
+            <h5 fzDropdownItem [headerDI]="true">Fernando Zueet</h5>
+
+            <a fzDropdownItem href="javascript:void(0);">My profile </a>
+            <a fzDropdownItem href="javascript:void(0);">My inbox </a>
+            <a fzDropdownItem href="javascript:void(0);">My Tasks </a>
+
+            <div fzDropdownItem [dividerDI]="true"></div>
+
+            <a fzDropdownItem href="javascript:void(0);">Settings </a>
+        </ng-template>
+
+        <!-- dropdown basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Dropdown basic:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-dropdown>
+                    <button class="mr-2 mb-2" button fzButton color="primary">Dropdown <i
+                            class="fas fa-chevron-down"></i></button>
+                    <a fzDropdownItem href="javascript:void(0);">My profile </a>
+                    <a fzDropdownItem href="javascript:void(0);">My inbox </a>
+                    <a fzDropdownItem href="javascript:void(0);">My Tasks </a>
+                </fz-dropdown>
+
+                <fz-dropdown>
+                    <button class="mr-2 mb-2" button fzButton color="primary">Header e divider <i
+                            class="fas fa-chevron-down"></i></button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+                <fz-dropdown [arrow]="false">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Without arrow <i
+                            class="fas fa-chevron-down"></i></button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+            </div>
+        </fz-card>
+
+        <!-- dropdown position -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Dropdown position:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-dropdown direction="top">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Top <i class="fas fa-chevron-up"></i>
+                    </button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+                <fz-dropdown direction="bottom">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Bottom <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+                <fz-dropdown direction="left">
+                    <button class="mr-2 mb-2" button fzButton color="primary"><i class="fas fa-chevron-left"></i> Left
+                    </button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+                <fz-dropdown direction="right">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Right <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+            </div>
+        </fz-card>
+
+        <!-- dropdown theme e colors hover -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Dropdown theme e colors hover:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-dropdown theme="dark">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Theme dark <i
+                            class="fas fa-chevron-down"></i></button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+                <fz-dropdown theme="light">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Theme light <i
+                            class="fas fa-chevron-down"></i></button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+                <fz-dropdown hoverItem="gray">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Item hover light <i
+                            class="fas fa-chevron-down"></i></button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+                <fz-dropdown hoverItem="color">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Item hover primary <i
+                            class="fas fa-chevron-down"></i></button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                </fz-dropdown>
+
+            </div>
+        </fz-card>
+
+        <!-- dropdown general -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Dropdown general:
+            </div>
+
+            <div class="d-flex flex-wrap">
+                <fz-dropdown>
+                    <button class="mr-2 mb-2" button fzButton color="primary">Icons left <i
+                            class="fas fa-chevron-down"></i></button>
+                    <h5 fzDropdownItem [headerDI]="true">Fernando Zueet</h5>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-user"></i> My profile
+                    </a>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-envelope"></i> My inbox
+                    </a>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-tasks"></i> My Tasks </a>
+                    <div fzDropdownItem [dividerDI]="true"></div>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-cog"></i> Settings</a>
+                </fz-dropdown>
+
+                <fz-dropdown>
+                    <button class="mr-2 mb-2" button fzButton color="primary">Icons right <i
+                            class="fas fa-chevron-down"></i></button>
+                    <h5 fzDropdownItem [headerDI]="true">Fernando Zueet</h5>
+                    <a class="d-flex justify-content-between" fzDropdownItem href="javascript:void(0);">My profile <i
+                            class="icon m-left fas fa-user"></i></a>
+                    <a class="d-flex justify-content-between" fzDropdownItem href="javascript:void(0);">My inbox <i
+                            class="icon m-left fas fa-envelope"></i></a>
+                    <a class="d-flex justify-content-between" fzDropdownItem href="javascript:void(0);">My Tasks <i
+                            class="icon m-left fas fa-tasks"></i></a>
+                    <div fzDropdownItem [dividerDI]="true"></div>
+                    <a class="d-flex justify-content-between" fzDropdownItem href="javascript:void(0);">Settings <i
+                            class="icon m-left fas fa-cog"></i></a>
+                </fz-dropdown>
+
+                <fz-dropdown>
+                    <button class="mr-2 mb-2" button fzButton color="primary">Icons colors <i
+                            class="fas fa-chevron-down"></i></button>
+                    <h5 fzDropdownItem [headerDI]="true">Fernando Zueet</h5>
+                    <a class="d-flex" fzDropdownItem href="javascript:void(0);">
+                        <fz-icon-color-circle class="mr-2" size="22" icon="fas fa-user"
+                                              color="success"></fz-icon-color-circle>
+                        My profile
+                    </a>
+                    <a class="d-flex" fzDropdownItem href="javascript:void(0);">
+                        <fz-icon-color-circle class="mr-2" size="22" icon="fas fa-envelope"
+                                              color="danger"></fz-icon-color-circle>
+                        My inbox
+                    </a>
+                    <a class="d-flex" fzDropdownItem href="javascript:void(0);">
+                        <fz-icon-color-circle class="mr-2" size="22" icon="fas fa-tasks"
+                                              color="warning"></fz-icon-color-circle>
+                        My Tasks
+                    </a>
+                    <div fzDropdownItem [dividerDI]="true"></div>
+                    <a class="d-flex" fzDropdownItem href="javascript:void(0);">
+                        <fz-icon-color-circle class="mr-2" size="22" icon="fas fa-cog"
+                                              color="info"></fz-icon-color-circle>
+                        Settings
+                    </a>
+                </fz-dropdown>
+
+                <fz-dropdown>
+                    <button class="mr-2 mb-2" button fzButton color="primary">Badges <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <h5 fzDropdownItem [headerDI]="true">Fernando Zueet</h5>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-user"></i> My profile</a>
+                    <a class="d-flex justify-content-between" fzDropdownItem href="javascript:void(0);">
+                        <span><i class="icon m-right fas fa-envelope"></i> My inbox </span>
+                        <fz-badge color="danger">30</fz-badge>
+                    </a>
+                    <a class="d-flex justify-content-between" fzDropdownItem href="javascript:void(0);"><span><i
+                            class="icon m-right fas fa-tasks"></i> My
+                            Tasks</span>
+                        <fz-badge color="success">30</fz-badge>
+                    </a>
+                    <div fzDropdownItem [dividerDI]="true"></div>
+                    <a fzDropdownItem href="javascript:void(0);"><i class="icon m-right fas fa-cog"></i> Settings
+                        <fz-badge class="ml-1"
+                                  color="info">
+                            New
+                        </fz-badge>
+                    </a>
+                </fz-dropdown>
+
+                <fz-dropdown hoverItem="color">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Horizontal <i
+                            class="fas fa-chevron-down"></i></button>
+                    <div class="d-flex">
+                        <a fzDropdownItem href="javascript:void(0);"><i class="icon fab fa-adobe"></i></a>
+                        <a fzDropdownItem href="javascript:void(0);"><i class="icon fab fa-airbnb"></i></a>
+                        <a fzDropdownItem href="javascript:void(0);"><i class="icon fab fa-algolia"></i></a>
+                        <a fzDropdownItem href="javascript:void(0);"><i class="fas fa-building"></i></a>
+                    </div>
+                </fz-dropdown>
+
+                <fz-dropdown hoverItem="color">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Horizontal 2 <i
+                            class="fas fa-chevron-down"></i></button>
+                    <ng-container *ngTemplateOutlet="geralTemplate"></ng-container>
+                    <div fzDropdownItem [dividerDI]="true"></div>
+                    <div class="d-flex">
+                        <a fzDropdownItem href="javascript:void(0);"><i class="icon fab fa-adobe"></i></a>
+                        <a fzDropdownItem href="javascript:void(0);"><i class="icon fab fa-airbnb"></i></a>
+                        <a fzDropdownItem href="javascript:void(0);"><i class="icon fab fa-algolia"></i></a>
+                        <a fzDropdownItem href="javascript:void(0);"><i class="fas fa-building"></i></a>
+                    </div>
+                </fz-dropdown>
+
+                <fz-dropdown direction="bottom">
+                    <button class="mr-2 mb-2" button fzButton color="primary">Submenu <i
+                            class="fas fa-chevron-down"></i></button>
+
+                    <div class="animated fadeIn" *ngIf="!dropdownSubitems">
+                        <a class="d-flex justify-content-between" fzDropdownItem href="javascript:void(0);"
+                           (click)="dropdownSubitems = true">Item <i class="icon m-left fas fa-chevron-right"></i></a>
+                    </div>
+
+                    <div class="animated fadeIn d-flex flex-column" *ngIf="dropdownSubitems">
+                        <a fzDropdownItem href="javascript:void(0);" (click)="dropdownSubitems = false"><i
+                                class="icon m-right fas fa-chevron-left"></i> Back </a>
+                        <div fzDropdownItem [dividerDI]="true"></div>
+                        <a fzDropdownItem href="javascript:void(0);">Subitem 1 </a>
+                        <a fzDropdownItem href="javascript:void(0);">Subitem 2 </a>
+                        <a fzDropdownItem href="javascript:void(0);">Subitem 3 </a>
+                    </div>
+
+                </fz-dropdown>
+
+            </div>
+        </fz-card>
+
+    </div>
+</div>

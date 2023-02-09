@@ -1,0 +1,7 @@
+<div [ngClass]="{ 'alert-dismissible': buttonClose }" *ngIf="show" class="alert light alert-{{ color }}" role="alert">
+    <ng-content></ng-content>
+    <button (click)="show = false" *ngIf="buttonClose" type="button" class="close" data-dismiss="alert"
+            aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>

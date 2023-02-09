@@ -1,0 +1,28 @@
+<fz-modal-dialog [confirmClose]="true" #resetPositionModal size="lg">
+    <div text>
+        <h5 class="text-center">Reprocess data for <strong>{{name}}</strong></h5>
+        <p class="text-center">This will reprocess data from the epoch timestamp that you specify forward, using the current configuration. Use 0 to reprocess all data.</p>
+        <form [formGroup]="resetPositionForm">
+            <div class="form-group">
+                <div class="form-group mt-3">
+                    <div class="form-group">
+                        <label for="timestamp">Timestamp</label>
+                        <input class="form-control {{timestamp?.invalid && (timestamp?.dirty || timestamp?.touched) && 'is-invalid'}}"
+                               formControlName="timestamp" type="number" min="0" id="timestamp">
+                        <small fzColor textColor="danger"
+                               *ngIf="timestamp?.invalid && (timestamp?.dirty || timestamp?.touched)">
+                            Required, must be at least 0
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ng-container buttons>
+        <button class="mr-2" fzButton [rounded]="true" size="lg" color="primary"
+                (click)="resetPosition();resetPositionModal.confirm();" [disabled]="!resetPositionForm.valid">
+            Confirm
+        </button>
+        <button fzButton [rounded]="true" size="lg" color="danger" (click)="resetPositionModal.hide()">Cancel</button>
+    </ng-container>
+</fz-modal-dialog>

@@ -1,0 +1,111 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Documentation</fz-breadcrumb-item>
+        <fz-breadcrumb-item>Components</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Tab</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area"><code>fz-tab-group</code> and <code>fz-tab</code></h5>
+
+        <div class="mb-3">
+            To use the component, import the <code> SharedModule </code> module into your module.
+        </div>
+
+        <!-- example -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Example:
+            </div>
+
+            <fz-tab-group color="success">
+                <fz-tab label="Tab 1">
+                    <div class="py-3">Content Tab 1</div>
+                </fz-tab>
+                <fz-tab [active]="true" label="Tab 2">
+                    <div class="py-3">Content Tab 2</div>
+                </fz-tab>
+                <fz-tab label="Tab 3">
+                    <div class="py-3">Content Tab 3</div>
+                </fz-tab>
+            </fz-tab-group>
+        </fz-card>
+
+        <!-- example code -->
+        <fz-card class="mt-3">
+            <div class="doc-title-card">
+                Example code:
+            </div>
+            <pre class="mb-0"><code [highlight]="example"></code></pre>
+        </fz-card>
+
+        <!-- input -->
+        <h5 class="doc-title-area">Input: <code class="ml-2">fz-tab-group</code></h5>
+        <fz-table-doc class="doc-card-margin" type="input">
+            <tr *ngFor="let item of inputs">
+                <td><code>{{ item.attribute }}</code></td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.default }}</td>
+                <td>
+                    <ng-container *ngIf="item.actions"><a href="javascript:void(0);"
+                                                          (click)="modalColors.show(item.actions)">{{ item.type }}</a>
+                    </ng-container>
+                    <ng-container *ngIf="!item.actions">{{ item.type }}</ng-container>
+                </td>
+                <td class="text-center">{{ item.required }}</td>
+            </tr>
+        </fz-table-doc>
+
+        <!-- output -->
+        <h5 class="doc-title-area">Output: <code class="ml-2">fz-tab-group</code></h5>
+        <fz-table-doc class="doc-card-margin" type="output">
+            <tr *ngFor="let item of outputs">
+                <td><code>{{ item.attribute }}</code></td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.type }}</td>
+            </tr>
+        </fz-table-doc>
+
+        <!-- content -->
+        <h5 class="doc-title-area">Content: <code class="ml-2">fz-tab-group</code></h5>
+        <fz-table-doc class="doc-card-margin" type="content">
+            <tr *ngFor="let item of contents">
+                <td><code>{{ item.attribute }}</code></td>
+                <td>{{ item.description }}</td>
+            </tr>
+        </fz-table-doc>
+
+        <!-- input -->
+        <h5 class="doc-title-area">Input: <code class="ml-2">fz-tab</code></h5>
+        <fz-table-doc class="doc-card-margin" type="input">
+            <tr *ngFor="let item of inputs2">
+                <td><code>{{ item.attribute }}</code></td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.default }}</td>
+                <td>
+                    <ng-container *ngIf="item.actions?.animate"><a href="javascript:void(0);"
+                                                                   (click)="modalAnimation.show()">{{ item.type }}</a>
+                    </ng-container>
+                    <ng-container *ngIf="!item.actions">{{ item.type }}</ng-container>
+                </td>
+                <td class="text-center">{{ item.required }}</td>
+            </tr>
+        </fz-table-doc>
+
+        <!-- content -->
+        <h5 class="doc-title-area">Content: <code class="ml-2">fz-tab</code></h5>
+        <fz-table-doc class="doc-card-margin" type="content">
+            <tr *ngFor="let item of contents2">
+                <td><code>{{ item.attribute }}</code></td>
+                <td>{{ item.description }}</td>
+            </tr>
+        </fz-table-doc>
+
+        <fz-modal-doc-colors #modalColors></fz-modal-doc-colors>
+        <fz-modal-doc-animations #modalAnimation></fz-modal-doc-animations>
+
+    </div>
+</div>

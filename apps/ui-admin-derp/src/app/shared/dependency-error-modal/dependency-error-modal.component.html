@@ -1,0 +1,16 @@
+<fz-modal headerTitle="Dependency Error" [centered]="true" backgroundContainer="danger" footerPosition="end" #sharedDependencyErrorModal>
+    <ng-container content>
+        <p>{{errorMessage}}</p>
+
+    </ng-container>
+    <ng-container content *ngIf="dependencies | dependencyIsPipeline: dependencies">
+        <h5>Pipelines</h5>
+        <hr fzColor backgroundColor="white">
+        <p *ngFor="let dependency of dependencies | dependencyIsPipeline: dependencies">
+            <strong>{{dependency.name}}</strong>
+        </p>
+    </ng-container>
+    <ng-container footer>
+        <button fzButton color="light" (click)="sharedDependencyErrorModal.hide()">Close</button>
+    </ng-container>
+</fz-modal>

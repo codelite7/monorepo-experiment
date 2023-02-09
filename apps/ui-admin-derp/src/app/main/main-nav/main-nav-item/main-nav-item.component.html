@@ -1,0 +1,32 @@
+<div class="main-nav-item" id="{{ name }}" [ngClass]="{ 'border-bottom-0': borderBottom0 }">
+
+    <a class="main-nav-item-a" [ngClass]="{ 'open': animateColapse == 'show', 'open-border': showContent }"
+       href="javascript:void(0);" [attr.aria-selected]="animateColapse == 'show' ? true : false" (keyup.tab)="colapse()"
+       (click)="colapse()">
+
+        <span #icon class="icon" [hidden]="!showIcon">
+            <ng-content select="[icon]"></ng-content>
+        </span>
+
+        <span class="text">
+            <ng-content select="[text]"></ng-content>
+        </span>
+
+        <span class="right">
+            <span #badge class="badge-area" [hidden]="!showBadge">
+                <ng-content select="[badge]"></ng-content>
+            </span>
+
+            <span class="icon-colapse" [hidden]="!showContent">
+                <span [hidden]="animateColapse != 'show'"><i class="animated fadeInUp fas fa-chevron-up"></i></span>
+                <span [hidden]="animateColapse == 'show'"><i class="fas fa-chevron-down"></i></span>
+            </span>
+        </span>
+
+    </a>
+
+    <div #content class="nav-item-content" [@animateContent]="animateColapse" [hidden]="!showContent">
+        <ng-content select="[subitem]"></ng-content>
+    </div>
+
+</div>

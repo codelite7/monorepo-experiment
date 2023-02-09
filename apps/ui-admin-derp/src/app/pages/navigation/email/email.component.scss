@@ -1,0 +1,136 @@
+@import "../../../../sass/bootstrap/variables";
+@import "src/sass/mixins";
+
+.email-table {
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+.email-table-tr {
+
+  padding: 1rem;
+  border-top: 1px solid $gray-200;
+
+  &.read {
+    background: $gray-100;
+  }
+
+  &:hover {
+    @include fz-box-shadow(0px 2px 5px 0px rgba($black, 0.2));
+
+    .email-table-icon-dot {
+      opacity: 1;
+    }
+  }
+}
+
+.email-table-icon-dot {
+  padding: .5rem;
+  color: $gray-500;
+  opacity: 0.5;
+}
+
+.email-contact-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 1rem;
+  margin-right: 1rem;
+}
+
+.email-table-name {
+  font-weight: 700;
+  color: $gray-800;
+}
+
+.email-table-message {
+  font-weight: 400;
+  color: $gray-600;
+}
+
+.email-table-strong {
+  font-weight: 500;
+}
+
+.email-table-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.email-table-area-text {
+  display: flex;
+  cursor: pointer;
+  font-size: 15px;
+  width: 80%;
+}
+
+.email-table-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-table-date {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  color: $gray-600;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.email-table-actions {
+  display: flex;
+  align-items: center;
+}
+
+.email-address-width {
+  width: 45px;
+}
+
+.email-details-text {
+  color: $gray-600;
+}
+
+@media (max-width: 800px) {
+  .email-table-tr {
+    padding-left: 13px;
+    padding-right: 11px;
+    margin-right: -1rem;
+    margin-left: -1rem;
+  }
+
+  .email-table-date {
+    display: none;
+  }
+}
+
+//
+//Dark theme
+//
+
+.email-table-dark {
+  &.email-table-tr {
+
+    border-top: 1px solid rgba($gray-700, 0.5);
+
+    &.read {
+      background: darken($gray-800, 3) !important;
+    }
+
+    .email-table-dest2 {
+      color: $gray-500;
+    }
+  }
+
+  .email-table-name {
+    color: $gray-100;
+  }
+
+  .email-details-text {
+    color: rgba($white, 0.7);
+  }
+}

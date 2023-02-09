@@ -1,0 +1,6 @@
+<span class="counter" [ngStyle]="{ 'font-size.px': size }">
+    <i [ngClass]="{ 'animated-infinite': animatedIconInfinite }"
+       class="animated animated-delay-1s {{ animatedIcon }} {{ icon }}"></i>
+    <span [ngClass]="{ 'animated-infinite': animatedBalloonInfinite, 'style-balloon': counter, 'style-dot': !counter && dot }"
+          class="balloon animated {{ color }} {{ animatedBalloon }}">{{ counter }}</span>
+</span>

@@ -1,0 +1,137 @@
+<div class="content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Alerts</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Snackbar</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">Snackbar:</h5>
+
+        <!-- simulate -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Simulate notification options:
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" class="form-control" [(ngModel)]="options.title">
+                </div>
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                    <label for="message">Message</label>
+                    <input type="text" name="message" id="message" class="form-control" [(ngModel)]="options.message">
+                </div>
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                    <label for="time">Duration</label>
+                    <input type="text" name="time" id="time" class="form-control" [(ngModel)]="options.duration">
+                </div>
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                    <label for="animate">Animate</label>
+                    <select class="form-control" id="animate" [(ngModel)]="options.animate">
+                        <option></option>
+                        <option *ngFor="let item of animates" [value]="item">{{ item }}</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row mt-2">
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                    <label for="color">Color</label>
+                    <select class="form-control" id="color" [(ngModel)]="options.color">
+                        <option></option>
+                        <option *ngFor="let item of colors" [value]="item">{{ item }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                    <label for="position">Position</label>
+                    <select class="form-control" id="position" [(ngModel)]="options.position">
+                        <option></option>
+                        <option *ngFor="let item of positions">{{ item }}</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+
+                <div class="form-group col-sm-6 col-md-6 col-lg-3">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="statusClose"
+                               [(ngModel)]="options.statusClose"
+                               (change)="options.statusClose = $event.target.checked">
+                        <label class="custom-control-label" for="statusClose"> Button close
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6 col-md-6 col-lg-3">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="stateProgress"
+                               [(ngModel)]="options.stateProgress"
+                               (change)="options.stateProgress = $event.target.checked">
+                        <label class="custom-control-label" for="stateProgress"> Status progress
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr/>
+
+            <button fzButton color="primary" (click)="notificationService.notification(this.options)">Simulate
+                notification
+            </button>
+
+        </fz-card>
+
+        <!-- others -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Others options:
+            </div>
+
+            <button class="mb-2 mr-2" fzButton color="success"
+                    (click)="notificationService.notification({ message: 'Record inserted successfully!', color: 'teal', icon: 'fas fa-check-circle' })">
+                Success
+                icon
+            </button>
+
+            <button class="mb-2 mr-2" fzButton color="success"
+                    (click)="notificationService.notification({ message: 'Record inserted successfully.', title: 'Successfully!!', color: 'teal', icon: 'fas fa-check-circle' })">
+                Success
+                icon 2
+            </button>
+
+            <button class="mb-2 mr-2" fzButton color="danger"
+                    (click)="notificationService.notification({ message: 'Something went wrong!', color: 'danger', icon: 'fas fa-exclamation-triangle' })">
+                Error
+                icon
+            </button>
+
+            <button class="mb-2 mr-2" fzButton color="danger"
+                    (click)="notificationService.notification({ message: 'Something went wrong.', title: 'Wrong!!', color: 'danger', icon: 'fas fa-exclamation-triangle' })">
+                Error
+                icon 2
+            </button>
+
+            <button class="mb-2 mr-2" fzButton color="primary"
+                    (click)="notificationService.notification({ message: 'Hello world.', title: 'New message!', color: 'primary', imgTitle: 'assets/images/user-profile.jpg' })">
+                Image
+            </button>
+
+        </fz-card>
+
+    </div>
+
+</div>

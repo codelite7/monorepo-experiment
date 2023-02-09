@@ -1,0 +1,41 @@
+<!--  email sign in form, if a user follows a sign in link from their email, then they have to provide their email address as verification -->
+<fz-modal  headerTitle="Send email sign in link" footerPosition="end" #emailSigninModal size="md" centered="true">
+    <ng-container content>
+        <form [formGroup]="emailSigninForm" (ngSubmit)="sendSigninEmail();emailSigninModal.hide()">
+            <div class="form-group">
+                <label for="name">Email Address</label>
+                <input formControlName="email" type="email" class="form-control {{email?.invalid && (email?.dirty || email?.touched) && 'is-invalid'}}" id="name" placeholder="someone@somewhere.com">
+                <small *ngIf="email?.errors?.required && (email?.dirty || email?.touched)" class="text-danger">
+                    Required
+                </small>
+                <small *ngIf="!email?.errors?.required && email?.errors?.pattern && (email?.dirty || email?.touched)" class="text-danger">
+                    Must be a valid email address
+                </small>
+            </div>
+            <div class="mt-5 align-content-right">
+                <button [disabled]="!emailSigninForm.valid" class="mr-2" fzButton color="primary" type="submit">
+                    Send sign in link to email
+                </button>
+            </div>
+        </form>
+    </ng-container>
+</fz-modal>
+
+<!-- success modal -->
+<fz-modal headerTitle="Success" [centered]="true" backgroundContainer="success" footerPosition="end" #emailSigninSuccessModal>
+    <ng-container content>
+        <p>A sign in link has been emailed to you. Follow the link to sign in.</p>
+    </ng-container>
+    <ng-container footer>
+        <button fzButton color="light" (click)="emailSigninSuccessModal.hide()">Close</button>
+    </ng-container>
+</fz-modal>
+
+<fz-modal headerTitle="Error" [centered]="true" backgroundContainer="danger" footerPosition="end" #emailSigninErrorModal>
+    <ng-container content>
+        <p>There was an error emailing you a sign in link. Please refresh the page and try again.</p>
+    </ng-container>
+    <ng-container footer>
+        <button fzButton color="light" (click)="emailSigninErrorModal.hide()">Close</button>
+    </ng-container>
+</fz-modal>

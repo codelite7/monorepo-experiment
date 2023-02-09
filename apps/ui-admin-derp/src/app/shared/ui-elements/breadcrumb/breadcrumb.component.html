@@ -1,0 +1,8 @@
+<nav [attr.aria-label]="ariaLabel">
+    <div [ngClass]="{ 'breadcrumb-dark': mainService.getDarkTheme() && background, 'breadcrumb-background': background, 'breadcrumb-padding': padding }"
+         class="breadcrumb align-items-center {{ directionC }}">
+        <ng-content select="[left]"></ng-content>
+        <ng-content></ng-content>
+        <ng-content select="[right]"></ng-content>
+    </div>
+</nav>
