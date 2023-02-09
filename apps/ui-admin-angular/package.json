@@ -1,6 +1,6 @@
 {
   "name": "ui-admin-angular",
-  "version": "0.0.18",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -99,6 +99,8 @@
     "open": "^7.0.3",
     "prettier": "^2.3.2",
     "protractor": "~7.0.0",
+    "semantic-release": "^20.1.0",
+    "semantic-release-monorepo": "^7.0.5",
     "ts-node": "^10.9.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0",
