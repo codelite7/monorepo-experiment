@@ -1,4 +1,4 @@
-name: Pull Request
+name: UI Admin Angular Pull Request
 on:
   pull_request:
     branches:
@@ -13,10 +13,10 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AUTOMATION_AWS_ACCESS_KEY_ID_SWARM }}
-          aws-secret-access-key: ${{ secrets.AUTOMATION_AWS_SECRET_ACCESS_KEY_SWARM }}
+          aws-access-key-id: ${{ secrets.AUTOMATION_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AUTOMATION_AWS_SECRET_KEY }}
           aws-region: us-west-2
-          role-to-assume: ${{ secrets.AUTOMATION_AWS_ROLE_ARN_SWARM }}
+          role-to-assume: ${{ secrets.AWS_AUTOMATION_ROLE_ARN }}
           role-duration-seconds: 900
       - name: checkout
         uses: actions/checkout@v3
