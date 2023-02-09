@@ -1,7 +1,0 @@
-<div class="main-search-header"
-     [ngClass]="{ 'msh-width-focus': focus, 'msh-dark': mainService.getHeaderTheme() != 'white' }">
-    <input type="text" placeholder="Search..." class="input-main-search-header form-control" (blur)="focus = false"
-           (focus)="focus = true"
-           (keyup.enter)="search()">
-    <a class="btn-main-search-header" href="javascript:void(0);" (click)="search()"><i class="fas fa-search"></i></a>
-</div>

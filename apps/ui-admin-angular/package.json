@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build-dev": "ng build -c dev",
-    "build-production": "ng build -c production",
+    "build-dev": "ng build",
+    "build-prod": "ng build -c prod",
     "test": "ng test",
     "checklint": "prettier --check \"{,!(node_modules)/**/}*.ts\" && tslint -c tslint.json --project ./",
     "fixlint": "prettier --write \"{,!(node_modules)/**/}*.ts\" && tslint --fix -c tslint.json --project ./",
