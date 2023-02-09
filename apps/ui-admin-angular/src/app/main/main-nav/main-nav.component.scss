@@ -1,0 +1,379 @@
+@import "../../../sass/bootstrap/variables";
+@import "src/sass/mixins";
+
+//
+// Variables
+
+$themes-nav: ("dark", "light");
+
+//
+// Code
+//
+
+fz-main-nav {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.main-nav {
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  z-index: 3;
+
+  &.z-index {
+    z-index: 11;
+  }
+
+  @include fz-box-shadow(-1px 10px 17px -3px rgba($black, 0.12));
+}
+
+.main-nav-area {
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
+
+  &.animate-width {
+    transition: width $seconds-animation-nav;
+  }
+
+  &.hide {
+    width: 0px;
+  }
+
+  &.show {
+    width: $navbar-width;
+  }
+}
+
+.main-nav-backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  background: rgba($black, 0.5);
+}
+
+.main-nav-bg-img {
+  width: $navbar-width;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  opacity: 0.070;
+}
+
+//
+//UTILITIES
+//
+
+// Nav logo
+.nav-logo {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  padding: 1rem;
+  justify-content: space-between;
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .icon-close {
+    font-size: 18px;
+    margin-top: 3px;
+  }
+}
+
+// Nav title
+.main-nav-title {
+  width: 100%;
+  height: auto;
+  display: flex;
+  text-transform: uppercase;
+  justify-content: space-between;
+  padding: .8rem 1.1em;
+  margin: 0.4rem 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+// Nav paddings
+.main-nav-p-lr {
+  padding: 0 1rem;
+}
+
+.main-nav-p-tb {
+  padding: 1rem 0;
+}
+
+.main-nav-p-t {
+  padding-top: 1rem;
+}
+
+.main-nav-p-b {
+  padding-bottom: 1rem;
+}
+
+// Nav horizontal
+.main-nav-horizontal {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  z-index: 2;
+  bottom: 0px;
+  padding: 0.6rem 1rem;
+  margin-top: 0.5rem;
+
+  .item {
+    padding: 0.3rem 0.5rem;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+//
+//SCROOLBAR STYLE
+//
+
+.main-nav-scrollbar-area {
+  width: 100%;
+  height: calc(100vh - 55px - 50px); // logo area - main-nav-horizontal area
+}
+
+//
+//MAIN NAV ITEM
+//
+
+.nav-item-group {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.main-nav-item {
+  height: auto;
+  margin: 0 0.5rem;
+  padding: 0.3rem 0;
+}
+
+.main-nav-item-a {
+  height: auto;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 0.6rem;
+  overflow: hidden;
+
+  &.open {
+    &.open-border {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      transition: border-radius linear 1s;
+    }
+  }
+
+  .icon {
+    width: 33px;
+    font-size: 15px;
+  }
+
+  .right {
+    .icon-colapse {
+      padding-left: 10px;
+      opacity: 0.6;
+      font-size: 11px;
+    }
+  }
+}
+
+//
+//MAIN NAV SUBITEM
+//
+
+.main-nav-subitem {
+  display: flex;
+  padding: 0.4rem 0.6rem;
+  padding-left: 43px;
+
+  &.active {
+    transition: color ease-in 0.2s;
+  }
+
+  .icon {
+    width: 23px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    .badge-area {
+      font-size: 14px;
+      margin-left: 7px;
+    }
+  }
+}
+
+.main-nav-item-a,
+.main-nav-subitem {
+  &:hover {
+    text-decoration: none;
+    transition: color ease-in 0.2s;
+  }
+
+  .text {
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .badge-area {
+    font-size: 14px;
+    margin-left: 7px;
+  }
+}
+
+.nav-item-content {
+  overflow: hidden;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+//
+//
+//THEMES
+//
+
+@mixin main-nav-theme($color) {
+  $colorBase: $primary;
+  $colorSelected: $primary;
+  $colorSelectedHover: $primary;
+  $mainItemContent: '';
+
+  @if $color=="light" {
+    $colorBase: desaturate(darken($white, 2), 2);
+    $colorSelected: $primary;
+    $colorSelectedHover: darken($primary, 15);
+    $mainItemContent: darken($colorBase, 10);
+  } @else {
+    $colorBase: $navbar-dark-base;
+    $colorSelected: $primary;
+    $colorSelectedHover: darken($primary, 20);
+    $mainItemContent: darken($colorBase, 8);
+  }
+
+  .main-nav-theme-#{$color} {
+
+    .main-nav-title {
+      color: rgba(color-yiq($colorBase), 0.5);
+    }
+
+    .main-nav-bg-featured {
+      background: darken($colorBase, 2);
+    }
+
+    .main-nav-horizontal {
+      .item {
+        color: rgba(color-yiq($colorBase), 0.6);
+
+        &:hover {
+          background: $colorSelectedHover;
+          color: color-yiq($colorSelectedHover);
+        }
+
+        &.active {
+          background: darken($colorSelected, 10);
+        }
+      }
+    }
+
+    .nav-logo {
+      background: lighten($colorBase, 1);
+      border-bottom: 1px solid rgba(color-yiq($colorBase), 0.04);
+
+      a {
+        color: color-yiq($colorBase) !important;
+
+        &:hover {
+          color: rgba(color-yiq($colorBase),
+                  0.9) !important;
+        }
+      }
+    }
+
+    &.main-nav {
+      background: $colorBase;
+      color: color-yiq($colorBase);
+    }
+
+    .main-nav-item {
+      border-bottom: 1px solid darken($colorBase, 2);
+    }
+
+    .main-nav-item-a {
+      color: color-yiq($colorBase);
+
+      &.open {
+        background: darken($colorSelectedHover, 8) !important;
+        color: color-yiq($colorSelectedHover) !important;
+      }
+
+      &:hover {
+        background: $colorSelectedHover;
+        color: color-yiq($colorSelectedHover) !important;
+      }
+    }
+
+    .main-nav-subitem {
+      color: rgba(color-yiq($colorBase), 0.7);
+      border-bottom: 1px solid darken($colorBase, 5);
+
+      &.active {
+        color: lighten($colorSelected, 8) !important;
+      }
+
+      &:hover {
+        color: color-yiq($colorBase);
+        background: darken($colorBase, 5);
+      }
+    }
+
+    .nav-item-content {
+      background: rgba($mainItemContent, 0.8);
+    }
+  }
+}
+
+@each $color in $themes-nav {
+  @include main-nav-theme($color);
+}

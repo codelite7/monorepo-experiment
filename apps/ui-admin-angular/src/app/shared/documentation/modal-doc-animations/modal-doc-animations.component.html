@@ -1,0 +1,11 @@
+<fz-modal size="sm" [headerClose]="true" animated="fadeIn" [scrollable]="true" headerTitle="Animations" #modal>
+    <ng-container content>
+        <fz-table [shadow]="false">
+            <tr *ngFor="let item of animate">
+                <td>
+                    {{ item }}
+                </td>
+            </tr>
+        </fz-table>
+    </ng-container>
+</fz-modal>

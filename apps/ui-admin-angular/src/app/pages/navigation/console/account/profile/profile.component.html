@@ -1,0 +1,84 @@
+<!-- wait for claims result before displaying anything-->
+<div *ngIf="claims">
+    <div class="text-center mb-5">
+        <h4 class="align-middle"><span class="text-muted">Username</span> {{claims?.name}}</h4>
+        <h4 class="align-middle"><span class="text-muted">Account ID</span> {{claims?.accountUuid}}</h4>
+        <h4 class="align-middle"><span class="text-muted">Account API Host</span> {{subdomain?.subdomain}}.api.{{domain}}</h4>
+        <button fzButton rounded="true" color="primary" type="button" (click)="showSetSubdomainModal()">Change API Subdomain</button>
+    </div>
+
+    <div class="container" style="width: 35vw">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="text-muted mb-1">Tier</h3>
+                <div class="d-flex align-items-center" style="align-items: center">
+                    <fz-icon-color-circle *ngIf="claims?.plan === 'sandbox'" color="primary" icon="fas fa-vial"
+                                          size="35"></fz-icon-color-circle>
+                    <fz-icon-color-circle *ngIf="claims?.plan === 'team'" color="primary" icon="fas fa-users"
+                                          size="35"></fz-icon-color-circle>
+                    <fz-icon-color-circle *ngIf="claims?.plan === 'business'" color="primary" icon="fas fa-building"
+                                          size="35"></fz-icon-color-circle>
+                    <span class="ml-2">
+                    {{getTierText()}}
+                </span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <h3 class="text-muted mb-1">Subscription Status</h3>
+                <div class="d-flex align-items-center">
+                    <fz-icon-color-circle *ngIf="claims?.subscriptionStatus === 'active'" color="success"
+                                          icon="fas fa-check" size="35"></fz-icon-color-circle>
+                    <fz-icon-color-circle *ngIf="claims?.subscriptionStatus === 'cancelled'" color="danger"
+                                          icon="fas fa-times" size="35"></fz-icon-color-circle>
+                    <span class="ml-2">
+                {{getSubscriptionStatusText()}}
+            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5" *ngIf="claims?.subscriptionStatus === 'active'">
+        <button fzButton rounded="true" color="primary" type="button" (click)="modal.show()">Cancel Subscription</button>
+    </div>
+</div>
+
+<fz-modal-dialog [confirmClose]="true" #modal>
+    <ng-container icon><i fzColor textColor="warning" class="fas fa-exclamation-circle"></i></ng-container>
+    <div text>
+        <h5 class="text-center">Are you sure you want to cancel your subscription?</h5>
+        <p class="text-center">All of your data will be deleted. You'll still be able to log in and view invoices.</p>
+    </div>
+    <ng-container buttons>
+        <button class="mr-2" fzButton [rounded]="true" size="lg" color="primary"
+                (click)="cancelSubscription();modal.confirm()">
+            Yes
+        </button>
+        <button fzButton [rounded]="true" size="lg" color="danger" (click)="modal.hide()">No</button>
+    </ng-container>
+</fz-modal-dialog>
+
+<!-- subdomain modal -->
+<fz-modal headerTitle="Change your api subdomain" footerPosition="end" #setSubdomainModal [centered]="true">
+    <ng-container content>
+        <form [formGroup]="subdomainForm" (ngSubmit)="setSubdomain()" xmlns="http://www.w3.org/1999/html">
+            <div class="form-group">
+                <!-- name -->
+                <label for="subdomain">Subdomain</label>
+                <!-- focux isn't working, not sure why -->
+                <input fzFocus focusState="true" type="text" formControlName="subdomain"
+                       class="form-control {{subdomainInput?.invalid && (subdomainInput?.dirty || subdomainInput?.touched) && 'is-invalid'}}"
+                       id="subdomain"
+                >
+                <small fzColor textColor="danger"
+                       *ngIf="subdomainInput?.invalid && (subdomainInput?.dirty || subdomainInput?.touched)">
+                    Required, must match regular expression {{ subdomainPattern }}
+                </small>
+            </div>
+            <button class="mr-2" fzButton color="primary" [disabled]="!subdomainForm.valid" type="submit">Set API
+                Subdomain
+            </button>
+            <button type="button" fzButton color="danger" (click)="setSubdomainModal.hide()">Cancel</button>
+        </form>
+    </ng-container>
+</fz-modal>

@@ -1,0 +1,50 @@
+@import "../../../../../sass/bootstrap/variables";
+
+//
+// Variables
+
+$padding-inner-dn: 0.9rem;
+$color-border-divider: rgba($black, 0.050);
+
+//
+// Code
+//
+
+.icon-color-circle {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  padding: .5rem;
+  border-radius: 50%;
+}
+
+.icon-color-circle-sm {
+  padding: .3rem;
+}
+
+//
+//Theme color icon 
+//
+
+@mixin theme-icon($color, $value) {
+  $color1: darken($value, 3);
+  $color2: darken($value, 8);
+
+  .icon-color-circle {
+    &.icon-#{$color} {
+      background: $value;
+      background: radial-gradient(ellipse at center, $color1 0%, $color2 100%);
+      color: rgba(color-yiq($color2), 0.9);
+    }
+  }
+}
+
+@each $color,
+$value in $colors {
+  @include theme-icon($color, $value);
+}
+
+@each $color,
+$value in $theme-colors {
+  @include theme-icon($color, $value);
+}

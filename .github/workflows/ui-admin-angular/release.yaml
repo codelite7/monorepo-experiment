@@ -1,0 +1,43 @@
+name: Production Release
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+    paths:
+      - 'apps/ui-admin-angular/**'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Run production build and create a github release with the zipped production build
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AUTOMATION_AWS_ACCESS_KEY_ID_SWARM }}
+          aws-secret-access-key: ${{ secrets.AUTOMATION_AWS_SECRET_ACCESS_KEY_SWARM }}
+          aws-region: us-west-2
+          role-to-assume: ${{ secrets.AUTOMATION_AWS_ROLE_ARN_SWARM }}
+          role-duration-seconds: 900
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: install npm with caching
+        uses: bahmutov/npm-install@v1
+      - name: build production release
+        working-directory: apps/ui-admin-angular
+        run: npm ci && npm run build-prod
+      - name: zip production release
+        working-directory: apps/ui-admin-angular
+        uses: thedoctor0/zip-release@0.7.1
+        with:
+          type: 'zip'
+          filename: 'release.zip'
+          path: dist/app
+      - name: Release
+        run: npx semantic-release
+        env:
+          GH_TOKEN: ${{ secrets.GH_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,16 @@
+<a id="{{ name }}" [ngClass]="{ 'active': active }" class="main-nav-subitem" href="javascript:void(0);"
+   (click)="showActive()">
+    <span #icon class="icon" [hidden]="!showIcon">
+        <ng-content select="[icon]"></ng-content>
+    </span>
+
+    <span class="text">
+        <ng-content></ng-content>
+    </span>
+
+    <span class="right">
+        <span #badge class="badge-area" [hidden]="!showBadge">
+            <ng-content select="[badge]"></ng-content>
+        </span>
+    </span>
+</a>

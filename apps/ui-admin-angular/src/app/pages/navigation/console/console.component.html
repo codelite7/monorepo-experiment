@@ -1,0 +1,51 @@
+<div class="content" *ngIf="webhookActions !== undefined && pipelines !== undefined">
+    <!-- welcome -->
+    <div class="text-center mt-4 mb-5">
+        <h2 class="align-middle"><span class="text-muted">Dashboard</span></h2>
+    </div>
+
+    <!-- card small-->
+    <div class="row mt-2 {{ mainService.noGuttersClass(764) }}">
+        <!-- filler div to center the other 2 -->
+        <div class="col-md-6 col-lg-3 col-xl-3 mb-4"></div>
+
+        <!-- pipelines card -->
+        <fz-card class="col-md-6 col-lg-3 col-xl-3 mb-4" [paddingBody]="false" background="primary">
+            <div class="dash-card-1 cursor-pointer" routerLink="pipelines">
+                <div class="dash-card-1-img">
+                    <fz-icon-color-circle [size]="45" icon="fas fa-code-branch" color="primary"></fz-icon-color-circle>
+                </div>
+                <div class="dash-card-1-txt">
+                    <div class="dest1">{{pipelines.length}}</div>
+                    <ng-container [ngPlural]="pipelines.length">
+                        <ng-template ngPluralCase="=0">Pipelines</ng-template>
+                        <ng-template ngPluralCase="=1">Pipeline</ng-template>
+                        <ng-template ngPluralCase="other">Pipelines</ng-template>
+                    </ng-container>
+                </div>
+            </div>
+        </fz-card>
+
+        <!-- webhook actions card -->
+        <fz-card class="col-md-6 col-lg-3 col-xl-3 mb-4 cursor-pointer" [paddingBody]="false" background="orange">
+            <div class="dash-card-1 cursor-pointer" routerLink="actions/webhooks">
+                <div class="dash-card-1-img">
+                    <fz-icon-color-circle [size]="45" icon=" fas fa-wifi" color="orange"></fz-icon-color-circle>
+                </div>
+                <div class="dash-card-1-txt">
+                    <div class="dest1">{{webhookActions.length}}</div>
+                    <ng-container [ngPlural]="webhookActions.length">
+                        <ng-template ngPluralCase="=0">Webhook Actions</ng-template>
+                        <ng-template ngPluralCase="=1">Webhook Action</ng-template>
+                        <ng-template ngPluralCase="other">Webhook Actions</ng-template>
+                    </ng-container>
+                </div>
+            </div>
+        </fz-card>
+
+        <!-- filler div to center the other 2 -->
+        <div class="col-md-6 col-lg-3 col-xl-3 mb-4"></div>
+
+    </div>
+    <!-- cards small -->
+</div>

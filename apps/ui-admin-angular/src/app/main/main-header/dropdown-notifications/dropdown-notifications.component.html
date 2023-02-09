@@ -1,0 +1,42 @@
+<fz-dropdown-header [state]="state" classBt="header-item mr-2" (stateOn)="state = $event">
+
+    <fz-icon-counter button color="danger" [counter]="" icon="fas fa-bell"></fz-icon-counter>
+
+    <ng-container header>
+        <h5>Notifications</h5>
+    </ng-container>
+
+    <ng-container content *ngIf="notifications.length === 0">
+        <a href="javascript:void(0);"
+           class="mh-dropdown-item">
+            <span class="mh-dropdown-item-text">
+                <span class="mh-dropdown-item-title">
+                    <h6>No notifications</h6>
+                </span>
+                <p >You don't have any notifications</p>
+            </span>
+        </a>
+    </ng-container>
+
+    <ng-container content *ngFor="let item of notifications">
+        <a routerLink="notifications" (click)="action(item)" [ngClass]="{ 'mh-dropdown-item-unread': item.unread }"
+           class="mh-dropdown-item">
+            <span class="mh-dropdown-item-icon">
+                <fz-icon-color-circle [color]="item.iconColor" [icon]="item.icon"></fz-icon-color-circle>
+            </span>
+            <span class="mh-dropdown-item-text">
+                <span class="mh-dropdown-item-title">
+                    <h6>{{ item.title }}</h6>
+                </span>
+                <p *ngIf="item.subtitle">{{ item.subtitle }}</p>
+                <small><i class="far fa-clock"></i> {{ item.time }}</small>
+            </span>
+        </a>
+    </ng-container>
+
+<!--    <a href="javascript:void(0);" routerLink="notifications" (click)="state = false" footer>-->
+<!--        See all notifications-->
+<!--        <i class="fas fa-angle-right"></i>-->
+<!--    </a>-->
+
+</fz-dropdown-header>

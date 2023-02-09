@@ -1,0 +1,6 @@
+<div [ngStyle]="{ 'width': floatingCardService.width, 'height': floatingCardService.height, 'min-height': floatingCardService.minHeight }"
+     [hidden]="!floatingCardService.state && contOpen == 0"
+     [ngClass]="{ 'padding': floatingCardService.padding, 'floating-card-dark': mainService.getDarkTheme(), 'slideInUp': floatingCardService.state, 'slideOutDown': !floatingCardService.state }"
+     class="floating-card animated floating-card-{{ floatingCardService.position }}">
+    <div class="content" #contentFC></div>
+</div>

@@ -1,0 +1,17 @@
+<ul [ngClass]="{ 'tab-dark-mode': darkMode, 'nav-pills': type == 'pills', 'nav-tabs': type == 'tabs', 'nav-justified': justified && type == 'tabs', 'nav-fill': justified && type == 'pills' }"
+    class="nav {{ tabPosition }} {{ classTab }}" role="tablist">
+
+    <li class="nav-item" *ngFor="let tab of tabs">
+        <a href="javascript:void(0);" (click)="selectTab(tab)" class="nav-link {{ tabColorActive(tab) }}"
+           [ngClass]="{ 'active': tab.active, 'disabled': tab.disabled }"
+           [attr.aria-disabled]="tab.disabled ? true : false"
+           [attr.tabindex]="tab.disabled ? '-1' : ''" [attr.aria-selected]="tab.active ? true : false">
+            <span [innerHTML]="sanitizerHTML(tab.label)"></span>
+        </a>
+    </li>
+
+</ul>
+
+<div class="tab-content {{ classContent }}">
+    <ng-content></ng-content>
+</div>

@@ -1,0 +1,22 @@
+<div class="accordion-item-area {{ classBox }}" [ngClass]="{ 'accordion-item-shadow': shadowBox, 'mt-2 accordion-transition': status && marginTopOpen, 'margin-top0': !status && marginTopOpen,
+      'mb-2 accordion-transition': status && marginBottomOpen, 'bottom0': !status && marginBottomOpen  }">
+
+    <a href="javascript:void(0);"
+       [ngClass]="{ 'light-text': ligthTextContent, 'accordion-item-padding': padding, 'disabled': disabled }"
+       class="accordion-item {{ accordionColor }} {{ class }}" [attr.aria-disabled]="disabled ? true : false"
+       [attr.tabindex]="disabled ? '-1' : ''"
+       [attr.aria-selected]="status ? true : false" (click)="colapse()">
+
+        <ng-content select="[header]"></ng-content>
+
+        <span [hidden]="!iconStatus || disabled">
+            <span [hidden]="!status"><i class="icon-colapse {{ iconClose }}"></i></span>
+            <span [hidden]="status"><i class="icon-colapse {{ iconOpen }}"></i></span>
+        </span>
+    </a>
+
+    <div [ngClass]="{ 'accordion-content-padding fadeIn': paddingContent && status, 'fadeOut': !status, 'light-text': ligthTextContent }"
+         class="animated accordion-content {{ classContent }} {{ accordionColor }}" [@animateContent]='state'>
+        <ng-content></ng-content>
+    </div>
+</div>

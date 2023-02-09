@@ -1,0 +1,20 @@
+<div [ngClass]="{ 'table-responsive': responsive, 'table-shadow': shadow }">
+
+    <table class="table" [ngClass]="{ 'table-striped': striped, 'table-bordered': bordered, 'table-dark': cDark,
+     'table-borderless': borderless, 'table-hover': hover, 'table-sm': small }">
+
+        <thead [ngClass]="{ 'thead-dark': theadDark, 'thead-light': theadLight }">
+        <ng-content select="[header]"></ng-content>
+        </thead>
+
+        <tbody>
+        <ng-content></ng-content>
+        </tbody>
+
+        <tfoot>
+        <ng-content select="[footer]"></ng-content>
+        </tfoot>
+
+    </table>
+
+</div>

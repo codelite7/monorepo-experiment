@@ -1,0 +1,43 @@
+@import "../../../../../sass/bootstrap/variables";
+
+.modal-dialog-p {
+  .icon {
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.2rem;
+    color: rgba($dark, 0.3);
+  }
+
+  .img-modal {
+    width: 100%;
+    height: auto;
+  }
+
+  .text {
+    color: $gray-700;
+
+    h5,
+    h4,
+    h3,
+    h2,
+    h1 {
+      font-weight: 300;
+    }
+  }
+}
+
+.modal-dialog-p-light {
+  .icon {
+    color: rgba($white, 0.6);
+  }
+
+  .text {
+    color: $white;
+
+    a {
+      color: $white !important;
+    }
+  }
+}

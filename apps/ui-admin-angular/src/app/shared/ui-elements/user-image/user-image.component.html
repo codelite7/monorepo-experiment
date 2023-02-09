@@ -1,0 +1,6 @@
+<div class="img-user" [ngStyle]="{ 'width.px': widthHeight, 'height.px': widthHeight }">
+    <img class="{{ imgClass }}" fzImageUtilities [crop]="true" [shadow]="false" [circle]="true"
+         [widthHeight]="widthHeight" [src]="srcC">
+    <div [ngStyle]="{ 'width.px': (widthHeight/3)-2 , 'height.px': (widthHeight/3)-2 }"
+         class="user-state {{ state }}"></div>
+</div>

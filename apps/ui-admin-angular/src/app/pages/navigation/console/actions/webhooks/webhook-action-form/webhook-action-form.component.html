@@ -1,0 +1,107 @@
+<form [formGroup]="webhookForm" (ngSubmit)="submit()">
+    <!-- Name -->
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input formControlName="name" type="text" class="form-control {{name?.invalid && (name?.dirty || name?.touched) && 'is-invalid'}}" id="name" placeholder="My webhook">
+        <small fzColor textColor="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+            Required
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="method">Method</label>
+        <select class="custom-select" formControlName="method" id="method">
+            <option value="WEBHOOK_ACTION_METHOD_GET">GET</option>
+            <option value="WEBHOOK_ACTION_METHOD_POST">POST</option>
+            <option value="WEBHOOK_ACTION_METHOD_PUT">PUT</option>
+            <option value="WEBHOOK_ACTION_METHOD_PATCH">PATCH</option>
+            <option value="WEBHOOK_ACTION_METHOD_DELETE">DELETE</option>
+        </select>
+    </div>
+    <!-- Url -->
+    <div class="form-group">
+        <label for="url">Url</label>
+        <input formControlName="url" type="text" class="form-control {{url?.invalid && (url?.dirty || url?.touched) && 'is-invalid'}}" id="url" placeholder="https://myurl?.com">
+        <small fzColor textColor="danger" *ngIf="url?.invalid && (url?.dirty || url?.touched)">
+            Required, must be a valid url beginning with "http://" or "https://"
+        </small>
+    </div>
+    <!-- tls verify -->
+    <div class="form-group custom-control custom-switch">
+        <input formControlName="verify_tls_certificate" type="checkbox" class="custom-control-input" id="verify_tls_certificate">
+        <label class="custom-control-label" for="verify_tls_certificate">Verify TLS certificate</label>
+    </div>
+    <!-- Headers -->
+    <div class="form-group">
+        <p>Headers</p>
+        <div formArrayName="headers" *ngFor="let header of headers!['controls']; let i=index">
+            <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+            <div class="form-group" [formGroupName]="i">
+                <!--name-->
+                <div class="form-row">
+                    <div class="col">
+                        <input class="form-control {{headers.get([i]).get('name').invalid && (headers.get([i]).get('name').dirty || headers.get([i]).get('name').touched) && 'is-invalid'}}" formControlName="name" type="text" id="header{{i}}-name" placeholder="Name">
+                        <small fzColor textColor="danger" *ngIf="headers.get([i]).get('name').invalid && (headers.get([i]).get('name').dirty ||headers.get([i]).get('name').touched)">
+                            Required, name may only contain letters, '-', or '_'
+                        </small>
+                    </div>
+                    <div class="col">
+                        <input class="form-control {{headers.get([i]).get('value').invalid && (headers.get([i]).get('value').dirty || headers.get([i]).get('value').touched) && 'is-invalid'}}" formControlName="value" type="text" id="header{{i}}-value" placeholder="Value">
+                        <small fzColor textColor="danger" *ngIf="headers.get([i]).get('value').invalid && (headers.get([i]).get('value').dirty ||headers.get([i]).get('value').touched)">
+                            Required
+                        </small>
+                    </div>
+                    <div class="col-form-label-sm">
+                        <button fzButton size="sm" type="button" (click)="removeHeader(i)">
+                            <i fzColor textColor="danger" class="mr-3 fas fa-backspace"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="mr-2 mb-2" fzButton [rounded]="true" color="primary" (click)="addHeader()" size="sm" type="button">Add header</button>
+    </div>
+
+    <!-- success codes -->
+    <div class="form-group">
+        <label>Success Codes</label>
+        <br>
+        <fz-badge *ngFor="let successCode of successCodeOptions" class="mr-2 cursor-pointer" [pill]="true" size="large" color="{{getSuccessCodeColor(successCode)}}" (click)="toggleSuccessCode(successCode)">{{successCode}}</fz-badge>
+        <br>
+        <small fzColor textColor="danger" *ngIf="success_codes?.value.length === 0 && (success_codes?.dirty || success_codes?.touched)">
+            You must select at last one success code
+        </small>
+    </div>
+    <!-- concurrency and retries -->
+    <div class="form-group">
+        <div class="form-row">
+            <!-- max concurrent requests -->
+            <div class="col">
+                <label for="max_concurrent_requests">Max concurrent requests</label>
+                <input formControlName="max_concurrent_requests" type="number" min="-1" class="form-control {{max_concurrent_requests?.invalid && (max_concurrent_requests?.dirty || max_concurrent_requests?.touched) && 'is-invalid'}}" id="max_concurrent_requests">
+                <small fzColor textColor="danger" *ngIf="max_concurrent_requests?.invalid && (max_concurrent_requests?.dirty || max_concurrent_requests?.touched)">
+                    Required, must be at least -1
+                </small>
+            </div>
+            <!-- max retries -->
+            <div class="col">
+                <label for="max_retries">Max retries</label>
+                <input class="form-control {{max_retries?.invalid && (max_retries?.dirty || max_retries?.touched) && 'is-invalid'}}" formControlName="max_retries" type="number" min="-1" id="max_retries">
+                <small fzColor textColor="danger" *ngIf="max_retries?.invalid && (max_retries?.dirty || max_retries?.touched)">
+                    Required, must be at least -1
+                </small>
+            </div>
+            <!-- retry interval -->
+            <div class="col">
+                <label for="retry_interval">Retry interval</label>
+                <input class="form-control {{retry_interval?.invalid && (retry_interval?.dirty || retry_interval?.touched) && 'is-invalid'}}" formControlName="retry_interval" type="number" min="0" id="retry_interval">
+                <small fzColor textColor="danger" *ngIf="retry_interval?.invalid && (retry_interval?.dirty || retry_interval?.touched)">
+                    Required, must be at least 0
+                </small>
+            </div>
+        </div>
+    </div>
+    <!-- submit -->
+    <button class="mr-2 mb-2" fzButton [rounded]="true" color="primary" type="submit" [disabled]="!webhookForm.valid">{{edit ? 'Save' : 'Create'}}</button>
+    <!-- cancel -->
+    <button class="mr-2 mb-2" fzButton [rounded]="true" color="danger" type="button" (click)="location.back()">Cancel</button>
+</form>

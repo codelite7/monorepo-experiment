@@ -1,0 +1,118 @@
+<div class="doc-area content">
+
+    <fz-breadcrumb>
+        <fz-breadcrumb-item><a routerLink="/dashboard" href="javascript:void(0);">Home</a></fz-breadcrumb-item>
+        <fz-breadcrumb-item>Others elements</fz-breadcrumb-item>
+        <fz-breadcrumb-item [active]="true"><strong>Circular Progress</strong></fz-breadcrumb-item>
+    </fz-breadcrumb>
+
+    <div class="doc-area">
+
+        <h5 class="doc-title-area">CIRCULAR PROGRESS:</h5>
+
+        <!-- basic -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Basic:
+            </div>
+
+            <div class="d-flex flex-column">
+
+                <div class="row no-gutters">
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="primary"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="success" [size]="90"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="purple" [size]="30"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="orange" [size]="100"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="red" [size]="50" text="$ 25"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="dark" [size]="80" text="100+"></fz-circular-progress>
+                    </div>
+                </div>
+
+            </div>
+        </fz-card>
+
+        <!-- Animation time -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Animation time:
+            </div>
+
+            <div class="d-flex flex-column">
+
+                <div class="row no-gutters">
+                    <div class="col-6 col-sm-4 col-md-1">
+                        <fz-circular-progress color="primary" [size]="50" animationTime="0.5s"
+                                              text="0.5s"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-1">
+                        <fz-circular-progress color="teal" [size]="90" animationTime="2s"
+                                              text="2s"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-1">
+                        <fz-circular-progress color="purple" [size]="30" animationTime="3s"
+                                              text="3s"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-1">
+                        <fz-circular-progress color="warning" [size]="100" animationTime="4s"
+                                              text="4s"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-1">
+                        <fz-circular-progress color="pink" [size]="70" animationTime="5s"
+                                              text="5s"></fz-circular-progress>
+                    </div>
+                </div>
+
+            </div>
+        </fz-card>
+
+        <!-- Stroke -->
+        <fz-card class="doc-card-margin">
+            <div class="doc-title-card">
+                Stroke:
+            </div>
+
+            <div class="d-flex flex-column">
+
+                <div class="row no-gutters">
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="teal" [size]="21" [strokeCircle]="1"
+                                              [strokeCircleBg]="3"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="primary" [size]="74" [strokeCircle]="3.5"
+                                              [strokeCircleBg]="2"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="pink" [size]="65" [strokeCircle]="3"
+                                              [strokeCircleBg]="2"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="cyan" [size]="95" [strokeCircle]="1"
+                                              [strokeCircleBg]="3"></fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="purple" [size]="50" text="$ 25" [strokeCircle]="3.5"
+                                              [strokeCircleBg]="1">
+                        </fz-circular-progress>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2">
+                        <fz-circular-progress color="gray" [size]="100" text="100+"></fz-circular-progress>
+                    </div>
+                </div>
+
+            </div>
+        </fz-card>
+
+    </div>
+</div>

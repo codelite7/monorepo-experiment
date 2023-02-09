@@ -1,0 +1,68 @@
+@import "../../../../sass/bootstrap/variables";
+
+.message-alert {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1.8rem;
+
+  .icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+
+    .error {
+      color: $danger;
+    }
+
+    .success {
+      color: $success;
+    }
+
+    .warning {
+      color: $warning;
+    }
+  }
+
+  .text {
+    &.error {
+      .ma-title {
+        color: darken($danger, 10);
+      }
+
+      .ma-text {
+        color: darken($danger, 14);
+      }
+    }
+
+    &.success {
+      .ma-title {
+        color: darken($success, 10);
+      }
+
+      .ma-text {
+        color: darken($success, 14);
+      }
+    }
+
+    &.warning {
+      .ma-title {
+        color: darken($warning, 10);
+      }
+
+      .ma-text {
+        color: darken($warning, 14);
+      }
+    }
+
+    &.light-text {
+      .ma-title {
+        color: $white !important;
+      }
+
+      .ma-text {
+        color: $white !important;
+      }
+    }
+  }
+}

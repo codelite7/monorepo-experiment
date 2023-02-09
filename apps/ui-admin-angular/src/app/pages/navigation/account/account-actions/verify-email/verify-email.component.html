@@ -1,0 +1,15 @@
+<div class="area-ext" [ngClass]="{ 'area-ext-dark': mainService.getDarkTheme() }">
+    <div class="area-ext-img " style="background-image: url('assets/images/background5.jpg');"></div>
+
+    <div *ngIf="oobValid === false" fzColor textColor="white" class="area-ext-center text-center">
+        <h1 class="animated fadeIn"><i class="fas fa-bomb animated pulse animated-infinite"></i> Error Verifying Email</h1>
+        <p class="animated fadeIn">We were unable to verify your email address, refresh the page to try again, or click below to get a new verification email.</p>
+        <div>
+            <button class="mt-3 animated fadeIn animated-delay-0_5s" fzButton [rounded]="true" color="light"
+                    (click)="sendVerificationEmail()"><i
+                    class="fas fa-sync"></i> Resend Verification Email
+            </button>
+        </div>
+    </div>
+
+</div>

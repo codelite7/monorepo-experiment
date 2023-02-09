@@ -1,0 +1,37 @@
+@import "../../../../../../sass/bootstrap/variables";
+
+.dash-cont-border-top {
+  border-top: 1px solid $gray-300;
+}
+
+.dash-cont-border-top-dark {
+  border-top: 1px solid $gray-700;
+}
+
+.dash-card-1 {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  padding: 1rem;
+
+  .dash-card-1-img {
+    display: flex;
+  }
+
+  .dash-card-1-txt {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    text-align: right;
+
+    .dest1 {
+      font-weight: 500;
+      font-size: 26px;
+    }
+
+    .dest2 {
+      font-size: 14px;
+      color: $gray-100;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<div class="{{ classArea }} {{ color }} card"
+     [ngClass]="{ 'card-padding': padding, 'card-shadow': shadow, 'light-text': ligthTextContent }">
+
+    <ng-content select="[top]"></ng-content>
+
+    <div #header class="card-header {{ classHeader }}"
+         [ngClass]="{ 'card-header-padding': paddingHeader && showHeader, 'card-header-styles': styleHeader }"
+         [hidden]="!showHeader">
+        <ng-content select="[header]"></ng-content>
+    </div>
+
+    <div class="card-body {{ classBody }}" [ngClass]="{ 'card-body-padding': paddingBody }">
+        <ng-content></ng-content>
+    </div>
+
+    <div #footer class="card-footer {{ classFooter }}"
+         [ngClass]="{ 'card-footer-padding': paddingFooter && showFooter, 'card-footer-styles': styleFooter }"
+         [hidden]="!showFooter">
+        <ng-content select="[footer]"></ng-content>
+    </div>
+
+    <ng-content select="[bottom]"></ng-content>
+
+</div>
