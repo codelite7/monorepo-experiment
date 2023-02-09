@@ -1,4 +1,4 @@
-name: Pull Request
+name: UI Admin Angular Pull Request
 on:
   pull_request:
     branches:
@@ -6,17 +6,10 @@ on:
     paths:
       - 'apps/ui-admin-angular/**'
 jobs:
-  build:
-    if: github.event.pull_request.draft == false
-    name: build
+  release:
     runs-on: ubuntu-latest
+    name: Build
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.10'
-          cache: 'yarn'
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -25,8 +18,16 @@ jobs:
           aws-region: us-west-2
           role-to-assume: ${{ secrets.AWS_AUTOMATION_ROLE_ARN }}
           role-duration-seconds: 900
-      - name: Compile App
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: apps/ui-admin-angular/package-lock.json
+      - name: build production release
+        working-directory: apps/ui-admin-angular
         run: |
-          yarn run co:login
-          yarn install
-          yarn run build-production
+          npm run co:login
+          npm ci
+          npm run build-prod

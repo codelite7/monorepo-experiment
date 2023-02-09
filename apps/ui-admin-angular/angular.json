@@ -56,7 +56,13 @@
             "namedChunks": true
           },
           "configurations": {
-            "production": {
+            "prod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -105,8 +111,8 @@
             "browserTarget": "app:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "app:build:production"
+            "prod": {
+              "browserTarget": "app:build:prod"
             }
           }
         },
@@ -140,8 +146,8 @@
             "devServerTarget": "app:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "app:serve:production"
+            "prod": {
+              "devServerTarget": "app:serve:prod"
             }
           }
         },
