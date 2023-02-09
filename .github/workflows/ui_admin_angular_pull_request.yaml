@@ -23,8 +23,9 @@ jobs:
         with:
           ref: main
       - name: install npm with caching
-        working-directory: apps/ui-admin-angular
         uses: bahmutov/npm-install@v1
+        with:
+        working-directory: apps/ui-admin-angular
       - name: build production release
         working-directory: apps/ui-admin-angular
         run: npm ci && npm run build-prod
