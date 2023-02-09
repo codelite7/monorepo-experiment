@@ -1,4 +1,13 @@
 {
   "branches": ["init"],
-  "ci": false
+  "ci": false,
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    ["@semantic-release/github", {
+      "assets": [
+        {"path": ".**", "label": "only my stuff"}
+      ]
+    }]
+  ]
 }
