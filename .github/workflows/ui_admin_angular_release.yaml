@@ -40,6 +40,8 @@ jobs:
           filename: 'release.zip'
           path: apps/ui-admin-angular/dist/app
       - name: Release
-        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          npm install -D semantic-release semantic-release-monorepo
+          npm run semantic-release -e semantic-release-monorepo
