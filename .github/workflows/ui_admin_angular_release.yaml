@@ -33,15 +33,13 @@ jobs:
           npm run co:login
           npm ci
           npm run build-prod
-      - name: zip production release
-        uses: thedoctor0/zip-release@0.7.1
-        with:
-          type: 'zip'
-          filename: 'release.zip'
-          path: apps/ui-admin-angular/dist/app
       - name: Release
+        working-directory: apps/ui-admin-angular
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          npm install -D semantic-release semantic-release-monorepo
-          npm run semantic-release -e semantic-release-monorepo
+          cd dist/app
+          zip -r release.zip .
+          mv release.zip ../../
+          cd ../../
+          npm run release
