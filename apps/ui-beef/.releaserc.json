@@ -12,7 +12,7 @@
         "assets": [
           {
             "path": "release.zip",
-            "label": "Release"
+            "label": "distribution"
           }
         ]
       }
