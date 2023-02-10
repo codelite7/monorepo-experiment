@@ -10,12 +10,11 @@ jobs:
     steps:
       - uses: crazy-max/ghaction-dump-context@v1
       - name: fetch release assets
-        uses: dsaltares/fetch-gh-release-asset@master
+        uses: robinraju/release-downloader@v1.7
         with:
-          repo: ${{ github.repository }}
-          version: ${{ github.ref }}
-          file: release.zip
-          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          tag: ${{ github.event.release.tag_name }}
+          fileName: "*"
       - run: |
           ls -l
   deploy2:
@@ -24,11 +23,10 @@ jobs:
     steps:
       - uses: crazy-max/ghaction-dump-context@v1
       - name: fetch release assets
-        uses: dsaltares/fetch-gh-release-asset@master
+        uses: robinraju/release-downloader@v1.7
         with:
-          repo: ${{ github.repository }}
-          version: ${{ github.ref }}
-          file: distribution
-          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          tag: ${{ github.event.release.tag_name }}
+          fileName: release.zip
       - run: |
           ls -l
