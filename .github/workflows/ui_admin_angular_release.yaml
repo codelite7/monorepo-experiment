@@ -1,4 +1,4 @@
-name: Production Release
+name: UI Admin Angular Production Release
 on:
   pull_request:
     types:

@@ -1,4 +1,4 @@
-name: Production Release
+name: UI Beef Production Release
 on:
   pull_request:
     types:
