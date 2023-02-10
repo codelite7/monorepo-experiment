@@ -27,7 +27,7 @@ jobs:
       - name: Release
         working-directory: apps/ui-beef
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GIT_RUNNER_TOKEN }}
         run: |
           cd dist/ui-beef
           zip -r release.zip .

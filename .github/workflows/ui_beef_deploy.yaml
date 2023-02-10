@@ -1,4 +1,4 @@
-name: UI Beef Production Release
+name: UI Beef Deploy
 on:
   release:
     types:
