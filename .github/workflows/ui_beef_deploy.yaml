@@ -1,0 +1,11 @@
+name: UI Beef Production Release
+on:
+  release:
+    types:
+      - published
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Run production build and create a github release with the zipped production build
+    steps:
+      - uses: crazy-max/ghaction-dump-context@v1
