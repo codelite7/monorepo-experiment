@@ -1,0 +1,33 @@
+name: UI Beef Pull Request
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'apps/ui-admin-angular/**'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AUTOMATION_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AUTOMATION_AWS_SECRET_KEY }}
+          aws-region: us-west-2
+          role-to-assume: ${{ secrets.AWS_AUTOMATION_ROLE_ARN }}
+          role-duration-seconds: 900
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: apps/ui-admin-angular/package-lock.json
+      - name: build production release
+        working-directory: apps/ui-admin-angular
+        run: |
+          npm run co:login
+          npm ci
+          npm run build-prod
