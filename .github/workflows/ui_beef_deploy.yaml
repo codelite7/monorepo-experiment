@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Run production build and create a github release with the zipped production build
     steps:
+      - name: checkout
+        uses: actions/checkout@v3
       - uses: crazy-max/ghaction-dump-context@v1
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -26,14 +28,15 @@ jobs:
           fileName: release.zip
           out-file-path: infra/terraform/ui-beef/dist
       - name: unzip distribution for upload to s3
-        working-directory: ./infra/terraform/ui-beef/dist
+        working-directory: infra/terraform/ui-beef/dist
         run: |
           pwd
+          ls -l
           unzip release.zip
           rm release.zip
           ls -l
       - name: Terraform Apply
-        working-directory: ./infra/terraform
+        working-directory: infra/terraform
         run: |
           pwd
           ls -l
