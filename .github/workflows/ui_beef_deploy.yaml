@@ -26,15 +26,16 @@ jobs:
           fileName: release.zip
           out-file-path: infra/terraform/ui-beef/dist
       - name: unzip distribution for upload to s3
-        working-directory: infra/terraform/ui-beef/dist
+        working-directory: ./infra/terraform/ui-beef/dist
         run: |
           pwd
           unzip release.zip
           rm release.zip
           ls -l
       - name: Terraform Apply
-        working-directory: infra/terraform
+        working-directory: ./infra/terraform
         run: |
           pwd
+          ls -l
           terraform init
           terraform apply -target=module.ui-beef-dev -auto-approve
