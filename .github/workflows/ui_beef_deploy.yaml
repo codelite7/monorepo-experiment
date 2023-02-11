@@ -14,10 +14,10 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AUTOMATION_AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AUTOMATION_AWS_SECRET_KEY }}
+          aws-access-key-id: ${{ secrets.AUTOMATION_AWS_ACCESS_KEY_ID_SWARM }}
+          aws-secret-access-key: ${{ secrets.AUTOMATION_AWS_SECRET_ACCESS_KEY_SWARM }}
           aws-region: us-west-2
-          role-to-assume: ${{ secrets.AWS_AUTOMATION_ROLE_ARN }}
+          role-to-assume: ${{ secrets.AUTOMATION_AWS_ROLE_ARN_SWARM }}
           role-duration-seconds: 900
       - uses: hashicorp/setup-terraform@v2
       - name: fetch release assets
