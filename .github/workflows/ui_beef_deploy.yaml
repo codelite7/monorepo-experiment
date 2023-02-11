@@ -4,7 +4,7 @@ on:
     types:
       - published
 jobs:
-  deploy:
+  deploy-dev:
     runs-on: ubuntu-latest
     name: Run production build and create a github release with the zipped production build
     steps:
@@ -17,6 +17,7 @@ jobs:
           aws-region: us-west-2
           role-to-assume: ${{ secrets.AWS_AUTOMATION_ROLE_ARN }}
           role-duration-seconds: 900
+      - uses: hashicorp/setup-terraform@v2
       - name: fetch release assets
         uses: robinraju/release-downloader@v1.7
         with:
@@ -31,7 +32,6 @@ jobs:
           rm release.zip
           ls -l
       - name: Terraform Apply
-        uses: catalystsquad/action-terraform@v1
-        with:
-          command: apply -target=module.ui-beef-dev
-          work-dir: infra/terraform
+        working-directory: infra/terraform
+        run: |
+          terraform apply -target=module.ui-beef-dev -auto-approve
