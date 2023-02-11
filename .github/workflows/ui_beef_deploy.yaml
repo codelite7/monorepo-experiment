@@ -4,29 +4,34 @@ on:
     types:
       - published
 jobs:
-  deploy1:
+  deploy:
     runs-on: ubuntu-latest
     name: Run production build and create a github release with the zipped production build
     steps:
       - uses: crazy-max/ghaction-dump-context@v1
-      - name: fetch release assets
-        uses: robinraju/release-downloader@v1.7
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          repository: ${{ github.repository }}
-          tag: ${{ github.event.release.tag_name }}
-          fileName: "*"
-      - run: |
-          ls -l
-  deploy2:
-    runs-on: ubuntu-latest
-    name: Run production build and create a github release with the zipped production build
-    steps:
-      - uses: crazy-max/ghaction-dump-context@v1
+          aws-access-key-id: ${{ secrets.AUTOMATION_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AUTOMATION_AWS_SECRET_KEY }}
+          aws-region: us-west-2
+          role-to-assume: ${{ secrets.AWS_AUTOMATION_ROLE_ARN }}
+          role-duration-seconds: 900
       - name: fetch release assets
         uses: robinraju/release-downloader@v1.7
         with:
           repository: ${{ github.repository }}
           tag: ${{ github.event.release.tag_name }}
           fileName: release.zip
-      - run: |
+          out-file-path: infra/terraform/ui-beef/dist
+      - name: unzip distribution for upload to s3
+        working-directory: infra/terraform/ui-beef/dist
+        run: |
+          unzip release.zip
+          rm release.zip
           ls -l
+      - name: Terraform Apply
+        uses: catalystsquad/action-terraform@v1
+        with:
+          command: apply -target=module.ui-beef-dev
+          work-dir: infra/terraform

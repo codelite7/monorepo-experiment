@@ -43,11 +43,11 @@ resource "aws_s3_bucket_website_configuration" "ui-beef" {
 }
 
 resource "aws_s3_object" "object" {
-  for_each = fileset("../../apps/ui-beef/dist/ui-beef", "**")
+  for_each = fileset(var.dist_path, "**")
   bucket = aws_s3_bucket.swarm-io-ui-beef.bucket
   key = each.value
-  source = "../../apps/ui-beef/dist/ui-beef/${each.value}"
-  etag = filemd5("../../apps/ui-beef/dist/ui-beef/${each.value}")
+  source = "${var.dist_path}/${each.value}"
+  etag = filemd5("${var.dist_path}/${each.value}")
   acl = aws_s3_bucket_acl.ui-beef.acl
   content_type = lookup(tomap(local.mime_types), element(split(".", each.key), length(split(".", each.key)) - 1))
 }
