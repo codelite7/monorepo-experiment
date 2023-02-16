@@ -9,6 +9,6 @@ variable "environment" {
 
 variable "dist_path" {
   description = "path to dist contents that should be uploaded to s3"
-  default = "ui-beef/dist"
+  default = "../../apps/ui-beef/dist/ui-beef"
 }
 
