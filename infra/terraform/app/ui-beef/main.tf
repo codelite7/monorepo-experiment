@@ -17,21 +17,21 @@ locals {
   }
 }
 
-resource "aws_s3_bucket" "swarm-io-ui-admin-angular" {
-  bucket = "swarm-io-ui-admin-angular-${var.environment}"
+resource "aws_s3_bucket" "ui-beef" {
+  bucket = "${var.bucket_prefix}-ui-beef-${var.environment}"
   tags = {
-    Name        = "ui-admin-angular"
+    Name        = "ui-beef"
     Environment = var.environment
   }
 }
 
-resource "aws_s3_bucket_acl" "ui-admin-angular" {
-  bucket = aws_s3_bucket.swarm-io-ui-admin-angular.bucket
+resource "aws_s3_bucket_acl" "ui-beef" {
+  bucket = aws_s3_bucket.ui-beef.bucket
   acl    = "public-read"
 }
 
-resource "aws_s3_bucket_website_configuration" "ui-admin-angular" {
-  bucket = aws_s3_bucket.swarm-io-ui-admin-angular.bucket
+resource "aws_s3_bucket_website_configuration" "ui-beef" {
+  bucket = aws_s3_bucket.ui-beef.bucket
 
   index_document {
     suffix = "index.html"
@@ -43,11 +43,11 @@ resource "aws_s3_bucket_website_configuration" "ui-admin-angular" {
 }
 
 resource "aws_s3_object" "object" {
-  for_each = fileset("../../apps/ui-admin-angular/dist/app", "**")
-  bucket = aws_s3_bucket.swarm-io-ui-admin-angular.bucket
+  for_each = fileset(var.dist_path, "**")
+  bucket = aws_s3_bucket.ui-beef.bucket
   key = each.value
-  source = "../../apps/ui-admin-angular/dist/app/${each.value}"
-  etag = filemd5("../../apps/ui-admin-angular/dist/app/${each.value}")
-  acl = aws_s3_bucket_acl.ui-admin-angular.acl
+  source = "${var.dist_path}/${each.value}"
+  etag = filemd5("${var.dist_path}/${each.value}")
+  acl = aws_s3_bucket_acl.ui-beef.acl
   content_type = lookup(tomap(local.mime_types), element(split(".", each.key), length(split(".", each.key)) - 1))
 }
