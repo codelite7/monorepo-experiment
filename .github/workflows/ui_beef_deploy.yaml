@@ -26,9 +26,9 @@ jobs:
           repository: ${{ github.repository }}
           tag: ${{ github.event.release.tag_name }}
           fileName: release.zip
-          out-file-path: infra/terraform/ui-beef/dist
+          out-file-path: infra/terraform/s3_static_site/dist
       - name: unzip distribution for upload to s3
-        working-directory: infra/terraform/ui-beef/dist
+        working-directory: infra/terraform/s3_static_site/dist
         run: |
           pwd
           ls -l

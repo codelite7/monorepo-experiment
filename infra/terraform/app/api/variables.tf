@@ -7,23 +7,19 @@ variable "environment" {
   }
 }
 
+variable "name" {
+    description = "name to use when naming resources"
+    default = "api"
+}
+
 variable "domain" {
   description = "the top level domain to use for this deployment"
 }
 
-variable "bucket_prefix" {
-  description = "prefix for s3 bucket names"
-}
-
-variable subject_alternative_names {
-  description = "SANs to add to the site's ssl certificate"
-  default     = []
-}
-
-variable "api_hosted_zone_id" {
+variable "hosted_zone_id" {
   description = "hosted zone for the api domain"
 }
 
-variable "api_certificate_arn" {
+variable "certificate_arn" {
   description = "acm certificate arn for the api domain"
 }

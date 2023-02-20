@@ -1,53 +1,9 @@
-locals {
-  mime_types = {
-    "css"  = "text/css"
-    "html" = "text/html"
-    "ico"  = "image/vnd.microsoft.icon"
-    "js"   = "application/javascript"
-    "json" = "application/json"
-    "map"  = "application/json"
-    "png"  = "image/png"
-    "svg"  = "image/svg+xml"
-    "txt"  = "text/plain"
-    "jpg" = "image/jpeg"
-    "woff" = "font/woff"
-    "webp" = "image/webp"
-    "ttf" = "font/ttf"
-    "eot" = "application/vnd.ms-fontobject"
-  }
-}
-
-resource "aws_s3_bucket" "ui-beef" {
-  bucket = "${var.bucket_prefix}-ui-beef-${var.environment}"
-  tags = {
-    Name        = "ui-beef"
-    Environment = var.environment
-  }
-}
-
-resource "aws_s3_bucket_acl" "ui-beef" {
-  bucket = aws_s3_bucket.ui-beef.bucket
-  acl    = "public-read"
-}
-
-resource "aws_s3_bucket_website_configuration" "ui-beef" {
-  bucket = aws_s3_bucket.ui-beef.bucket
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
-  }
-}
-
-resource "aws_s3_object" "object" {
-  for_each = fileset(var.dist_path, "**")
-  bucket = aws_s3_bucket.ui-beef.bucket
-  key = each.value
-  source = "${var.dist_path}/${each.value}"
-  etag = filemd5("${var.dist_path}/${each.value}")
-  acl = aws_s3_bucket_acl.ui-beef.acl
-  content_type = lookup(tomap(local.mime_types), element(split(".", each.key), length(split(".", each.key)) - 1))
+module "ui-beef" {
+  source  = "../../common_modules/s3_static_site"
+  dist_path = "../../apps/ui-beef/dist/ui-beef"
+  site_name = "ui-beef"
+  domain = var.domain
+  subject_alternative_names = var.subject_alternative_names
+  environment = var.environment
+  bucket_prefix = var.bucket_prefix
 }

@@ -23,13 +23,13 @@ describe('AppComponent', () => {
   it(`should have as title 'ui-beef'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ui-beef');
+    expect(app.title).toEqual('s3_static_site');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ui-beef app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('s3_static_site app is running!');
   });
 });

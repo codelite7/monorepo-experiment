@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'apps/ui-beef/**'
+      - 'apps/s3_static_site/**'
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -18,14 +18,14 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: apps/ui-beef/package-lock.json
+          cache-dependency-path: apps/s3_static_site/package-lock.json
       - name: build production release
-        working-directory: apps/ui-beef
+        working-directory: apps/s3_static_site
         run: |
           npm ci
           npm run build
       - name: Release
-        working-directory: apps/ui-beef
+        working-directory: apps/s3_static_site
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_RUNNER_TOKEN }}
         run: |
