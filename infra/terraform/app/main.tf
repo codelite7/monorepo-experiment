@@ -12,3 +12,8 @@ module "api" {
   hosted_zone_id = var.api_hosted_zone_id
   certificate_arn = var.api_certificate_arn
 }
+
+module "auth" {
+  source = "./auth"
+  app_name = var.app_name
+}

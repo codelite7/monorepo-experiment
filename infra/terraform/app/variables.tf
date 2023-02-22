@@ -27,3 +27,7 @@ variable "api_hosted_zone_id" {
 variable "api_certificate_arn" {
   description = "acm certificate arn for the api domain"
 }
+
+variable "app_name" {
+  description = "app name to use when naming and tagging resources"
+}
