@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Auth} from "aws-amplify";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,12 @@ import {HttpClient} from "@angular/common/http";
 export class AppComponent {
   title = 's3_static_site';
   phrase = ''
+  user : any = {}
   constructor(private http: HttpClient) {
+    Auth.currentAuthenticatedUser().then(user => {
+      this.user = user
+      console.log(user)
+    })
     this.getPhrase()
   };
   getPhrase() {

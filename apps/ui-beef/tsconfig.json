@@ -20,6 +20,8 @@
     "module": "ES2022",
     "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "lib": [
       "ES2022",
       "dom"
